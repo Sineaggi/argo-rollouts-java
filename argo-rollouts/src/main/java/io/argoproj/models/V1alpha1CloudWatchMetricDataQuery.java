@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgUtilIntstrIntOrString;
+import io.kubernetes.client.custom.IntOrString;
 import io.argoproj.models.V1alpha1CloudWatchMetricStat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -50,7 +50,7 @@ public class V1alpha1CloudWatchMetricDataQuery {
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
-  private IoK8sApimachineryPkgUtilIntstrIntOrString period = null;
+  private IntOrString period = null;
 
   public static final String SERIALIZED_NAME_RETURN_DATA = "returnData";
   @SerializedName(SERIALIZED_NAME_RETURN_DATA)
@@ -149,7 +149,7 @@ public class V1alpha1CloudWatchMetricDataQuery {
   }
 
 
-  public V1alpha1CloudWatchMetricDataQuery period(IoK8sApimachineryPkgUtilIntstrIntOrString period) {
+  public V1alpha1CloudWatchMetricDataQuery period(IntOrString period) {
     
     this.period = period;
     return this;
@@ -162,12 +162,12 @@ public class V1alpha1CloudWatchMetricDataQuery {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgUtilIntstrIntOrString getPeriod() {
+  public IntOrString getPeriod() {
     return period;
   }
 
 
-  public void setPeriod(IoK8sApimachineryPkgUtilIntstrIntOrString period) {
+  public void setPeriod(IntOrString period) {
     this.period = period;
   }
 

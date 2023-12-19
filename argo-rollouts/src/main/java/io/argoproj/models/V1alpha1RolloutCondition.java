@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import java.time.OffsetDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -33,11 +33,11 @@ import java.io.IOException;
 public class V1alpha1RolloutCondition {
   public static final String SERIALIZED_NAME_LAST_TRANSITION_TIME = "lastTransitionTime";
   @SerializedName(SERIALIZED_NAME_LAST_TRANSITION_TIME)
-  private IoK8sApimachineryPkgApisMetaV1Time lastTransitionTime = null;
+  private OffsetDateTime lastTransitionTime = null;
 
   public static final String SERIALIZED_NAME_LAST_UPDATE_TIME = "lastUpdateTime";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATE_TIME)
-  private IoK8sApimachineryPkgApisMetaV1Time lastUpdateTime = null;
+  private OffsetDateTime lastUpdateTime = null;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -56,7 +56,7 @@ public class V1alpha1RolloutCondition {
   private String type = "";
 
 
-  public V1alpha1RolloutCondition lastTransitionTime(IoK8sApimachineryPkgApisMetaV1Time lastTransitionTime) {
+  public V1alpha1RolloutCondition lastTransitionTime(OffsetDateTime lastTransitionTime) {
     
     this.lastTransitionTime = lastTransitionTime;
     return this;
@@ -68,17 +68,17 @@ public class V1alpha1RolloutCondition {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getLastTransitionTime() {
+  public OffsetDateTime getLastTransitionTime() {
     return lastTransitionTime;
   }
 
 
-  public void setLastTransitionTime(IoK8sApimachineryPkgApisMetaV1Time lastTransitionTime) {
+  public void setLastTransitionTime(OffsetDateTime lastTransitionTime) {
     this.lastTransitionTime = lastTransitionTime;
   }
 
 
-  public V1alpha1RolloutCondition lastUpdateTime(IoK8sApimachineryPkgApisMetaV1Time lastUpdateTime) {
+  public V1alpha1RolloutCondition lastUpdateTime(OffsetDateTime lastUpdateTime) {
     
     this.lastUpdateTime = lastUpdateTime;
     return this;
@@ -90,12 +90,12 @@ public class V1alpha1RolloutCondition {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getLastUpdateTime() {
+  public OffsetDateTime getLastUpdateTime() {
     return lastUpdateTime;
   }
 
 
-  public void setLastUpdateTime(IoK8sApimachineryPkgApisMetaV1Time lastUpdateTime) {
+  public void setLastUpdateTime(OffsetDateTime lastUpdateTime) {
     this.lastUpdateTime = lastUpdateTime;
   }
 

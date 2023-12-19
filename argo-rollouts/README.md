@@ -35,3 +35,21 @@ Nested objects need help
 * wrong imports
 * not all k8s objects implement `KubernetesObject`
 * still uses nullable and generated annotations
+
+
+
+
+
+# after some hacking we have a new set of search/replacements
+
+io.argoproj.models.IoK8sApimachineryPkgUtilIntstrIntOrString -> io.kubernetes.client.custom.IntOrString
+
+io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time -> java.time.OffsetDateTime
+
+io.argoproj.models.IoK8sApiBatchV1JobSpec -> io.kubernetes.client.openapi.models.V1JobSpec
+
+io.argoproj.models.IoK8sApimachineryPkgApisMetaV1LabelSelector -> io.kubernetes.client.openapi.models.V1LabelSelector
+
+io.argoproj.models.IoK8sApiBatchV1JobSpec -> io.kubernetes.client.openapi.models.V1JobSpec
+
+io.argoproj.models.IoK8sApiCoreV1PodTemplateSpec -> io.kubernetes.client.openapi.models.V1PodTemplateSpec

@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import java.time.OffsetDateTime;
 import io.argoproj.models.V1alpha1ALBStatus;
 import io.argoproj.models.V1alpha1BlueGreenStatus;
 import io.argoproj.models.V1alpha1CanaryStatus;
@@ -48,7 +48,7 @@ public class V1alpha1RolloutStatus {
 
   public static final String SERIALIZED_NAME_ABORTED_AT = "abortedAt";
   @SerializedName(SERIALIZED_NAME_ABORTED_AT)
-  private IoK8sApimachineryPkgApisMetaV1Time abortedAt = null;
+  private OffsetDateTime abortedAt = null;
 
   public static final String SERIALIZED_NAME_ALB = "alb";
   @SerializedName(SERIALIZED_NAME_ALB)
@@ -120,7 +120,7 @@ public class V1alpha1RolloutStatus {
 
   public static final String SERIALIZED_NAME_RESTARTED_AT = "restartedAt";
   @SerializedName(SERIALIZED_NAME_RESTARTED_AT)
-  private IoK8sApimachineryPkgApisMetaV1Time restartedAt = null;
+  private OffsetDateTime restartedAt = null;
 
   public static final String SERIALIZED_NAME_SELECTOR = "selector";
   @SerializedName(SERIALIZED_NAME_SELECTOR)
@@ -185,7 +185,7 @@ public class V1alpha1RolloutStatus {
   }
 
 
-  public V1alpha1RolloutStatus abortedAt(IoK8sApimachineryPkgApisMetaV1Time abortedAt) {
+  public V1alpha1RolloutStatus abortedAt(OffsetDateTime abortedAt) {
     
     this.abortedAt = abortedAt;
     return this;
@@ -198,12 +198,12 @@ public class V1alpha1RolloutStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getAbortedAt() {
+  public OffsetDateTime getAbortedAt() {
     return abortedAt;
   }
 
 
-  public void setAbortedAt(IoK8sApimachineryPkgApisMetaV1Time abortedAt) {
+  public void setAbortedAt(OffsetDateTime abortedAt) {
     this.abortedAt = abortedAt;
   }
 
@@ -615,7 +615,7 @@ public class V1alpha1RolloutStatus {
   }
 
 
-  public V1alpha1RolloutStatus restartedAt(IoK8sApimachineryPkgApisMetaV1Time restartedAt) {
+  public V1alpha1RolloutStatus restartedAt(OffsetDateTime restartedAt) {
     
     this.restartedAt = restartedAt;
     return this;
@@ -628,12 +628,12 @@ public class V1alpha1RolloutStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getRestartedAt() {
+  public OffsetDateTime getRestartedAt() {
     return restartedAt;
   }
 
 
-  public void setRestartedAt(IoK8sApimachineryPkgApisMetaV1Time restartedAt) {
+  public void setRestartedAt(OffsetDateTime restartedAt) {
     this.restartedAt = restartedAt;
   }
 

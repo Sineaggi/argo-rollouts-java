@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgUtilIntstrIntOrString;
+import io.kubernetes.client.custom.IntOrString;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -33,10 +33,10 @@ import java.io.IOException;
 public class V1alpha1RolloutPause {
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
-  private IoK8sApimachineryPkgUtilIntstrIntOrString duration = null;
+  private IntOrString duration = null;
 
 
-  public V1alpha1RolloutPause duration(IoK8sApimachineryPkgUtilIntstrIntOrString duration) {
+  public V1alpha1RolloutPause duration(IntOrString duration) {
     
     this.duration = duration;
     return this;
@@ -49,12 +49,12 @@ public class V1alpha1RolloutPause {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgUtilIntstrIntOrString getDuration() {
+  public IntOrString getDuration() {
     return duration;
   }
 
 
-  public void setDuration(IoK8sApimachineryPkgUtilIntstrIntOrString duration) {
+  public void setDuration(IntOrString duration) {
     this.duration = duration;
   }
 

@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1LabelSelector;
+import io.kubernetes.client.openapi.models.V1LabelSelector;
 import io.argoproj.models.V1alpha1PodTemplateMetadata;
 import io.argoproj.models.V1alpha1TemplateService;
 import io.swagger.annotations.ApiModel;
@@ -47,7 +47,7 @@ public class V1alpha1RolloutExperimentTemplate {
 
   public static final String SERIALIZED_NAME_SELECTOR = "selector";
   @SerializedName(SERIALIZED_NAME_SELECTOR)
-  private IoK8sApimachineryPkgApisMetaV1LabelSelector selector = null;
+  private V1LabelSelector selector = null;
 
   public static final String SERIALIZED_NAME_SERVICE = "service";
   @SerializedName(SERIALIZED_NAME_SERVICE)
@@ -130,7 +130,7 @@ public class V1alpha1RolloutExperimentTemplate {
   }
 
 
-  public V1alpha1RolloutExperimentTemplate selector(IoK8sApimachineryPkgApisMetaV1LabelSelector selector) {
+  public V1alpha1RolloutExperimentTemplate selector(V1LabelSelector selector) {
     
     this.selector = selector;
     return this;
@@ -143,12 +143,12 @@ public class V1alpha1RolloutExperimentTemplate {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1LabelSelector getSelector() {
+  public V1LabelSelector getSelector() {
     return selector;
   }
 
 
-  public void setSelector(IoK8sApimachineryPkgApisMetaV1LabelSelector selector) {
+  public void setSelector(V1LabelSelector selector) {
     this.selector = selector;
   }
 

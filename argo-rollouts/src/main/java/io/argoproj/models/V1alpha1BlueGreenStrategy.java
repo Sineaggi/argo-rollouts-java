@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgUtilIntstrIntOrString;
+import io.kubernetes.client.custom.IntOrString;
 import io.argoproj.models.V1alpha1AntiAffinity;
 import io.argoproj.models.V1alpha1PodTemplateMetadata;
 import io.argoproj.models.V1alpha1RolloutAnalysis;
@@ -60,7 +60,7 @@ public class V1alpha1BlueGreenStrategy {
 
   public static final String SERIALIZED_NAME_MAX_UNAVAILABLE = "maxUnavailable";
   @SerializedName(SERIALIZED_NAME_MAX_UNAVAILABLE)
-  private IoK8sApimachineryPkgUtilIntstrIntOrString maxUnavailable = null;
+  private IntOrString maxUnavailable = null;
 
   public static final String SERIALIZED_NAME_POST_PROMOTION_ANALYSIS = "postPromotionAnalysis";
   @SerializedName(SERIALIZED_NAME_POST_PROMOTION_ANALYSIS)
@@ -228,7 +228,7 @@ public class V1alpha1BlueGreenStrategy {
   }
 
 
-  public V1alpha1BlueGreenStrategy maxUnavailable(IoK8sApimachineryPkgUtilIntstrIntOrString maxUnavailable) {
+  public V1alpha1BlueGreenStrategy maxUnavailable(IntOrString maxUnavailable) {
     
     this.maxUnavailable = maxUnavailable;
     return this;
@@ -241,12 +241,12 @@ public class V1alpha1BlueGreenStrategy {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgUtilIntstrIntOrString getMaxUnavailable() {
+  public IntOrString getMaxUnavailable() {
     return maxUnavailable;
   }
 
 
-  public void setMaxUnavailable(IoK8sApimachineryPkgUtilIntstrIntOrString maxUnavailable) {
+  public void setMaxUnavailable(IntOrString maxUnavailable) {
     this.maxUnavailable = maxUnavailable;
   }
 

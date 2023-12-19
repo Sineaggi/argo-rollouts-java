@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import java.time.OffsetDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class V1alpha1PauseCondition {
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
-  private IoK8sApimachineryPkgApisMetaV1Time startTime = null;
+  private OffsetDateTime startTime = null;
 
 
   public V1alpha1PauseCondition reason(String reason) {
@@ -62,7 +62,7 @@ public class V1alpha1PauseCondition {
   }
 
 
-  public V1alpha1PauseCondition startTime(IoK8sApimachineryPkgApisMetaV1Time startTime) {
+  public V1alpha1PauseCondition startTime(OffsetDateTime startTime) {
     
     this.startTime = startTime;
     return this;
@@ -74,12 +74,12 @@ public class V1alpha1PauseCondition {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getStartTime() {
+  public OffsetDateTime getStartTime() {
     return startTime;
   }
 
 
-  public void setStartTime(IoK8sApimachineryPkgApisMetaV1Time startTime) {
+  public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 

@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import java.time.OffsetDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -36,7 +36,7 @@ import java.util.Map;
 public class V1alpha1Measurement {
   public static final String SERIALIZED_NAME_FINISHED_AT = "finishedAt";
   @SerializedName(SERIALIZED_NAME_FINISHED_AT)
-  private IoK8sApimachineryPkgApisMetaV1Time finishedAt = null;
+  private OffsetDateTime finishedAt = null;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -52,18 +52,18 @@ public class V1alpha1Measurement {
 
   public static final String SERIALIZED_NAME_RESUME_AT = "resumeAt";
   @SerializedName(SERIALIZED_NAME_RESUME_AT)
-  private IoK8sApimachineryPkgApisMetaV1Time resumeAt = null;
+  private OffsetDateTime resumeAt = null;
 
   public static final String SERIALIZED_NAME_STARTED_AT = "startedAt";
   @SerializedName(SERIALIZED_NAME_STARTED_AT)
-  private IoK8sApimachineryPkgApisMetaV1Time startedAt = null;
+  private OffsetDateTime startedAt = null;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private String value;
 
 
-  public V1alpha1Measurement finishedAt(IoK8sApimachineryPkgApisMetaV1Time finishedAt) {
+  public V1alpha1Measurement finishedAt(OffsetDateTime finishedAt) {
     
     this.finishedAt = finishedAt;
     return this;
@@ -76,12 +76,12 @@ public class V1alpha1Measurement {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getFinishedAt() {
+  public OffsetDateTime getFinishedAt() {
     return finishedAt;
   }
 
 
-  public void setFinishedAt(IoK8sApimachineryPkgApisMetaV1Time finishedAt) {
+  public void setFinishedAt(OffsetDateTime finishedAt) {
     this.finishedAt = finishedAt;
   }
 
@@ -162,7 +162,7 @@ public class V1alpha1Measurement {
   }
 
 
-  public V1alpha1Measurement resumeAt(IoK8sApimachineryPkgApisMetaV1Time resumeAt) {
+  public V1alpha1Measurement resumeAt(OffsetDateTime resumeAt) {
     
     this.resumeAt = resumeAt;
     return this;
@@ -175,17 +175,17 @@ public class V1alpha1Measurement {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getResumeAt() {
+  public OffsetDateTime getResumeAt() {
     return resumeAt;
   }
 
 
-  public void setResumeAt(IoK8sApimachineryPkgApisMetaV1Time resumeAt) {
+  public void setResumeAt(OffsetDateTime resumeAt) {
     this.resumeAt = resumeAt;
   }
 
 
-  public V1alpha1Measurement startedAt(IoK8sApimachineryPkgApisMetaV1Time startedAt) {
+  public V1alpha1Measurement startedAt(OffsetDateTime startedAt) {
     
     this.startedAt = startedAt;
     return this;
@@ -198,12 +198,12 @@ public class V1alpha1Measurement {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getStartedAt() {
+  public OffsetDateTime getStartedAt() {
     return startedAt;
   }
 
 
-  public void setStartedAt(IoK8sApimachineryPkgApisMetaV1Time startedAt) {
+  public void setStartedAt(OffsetDateTime startedAt) {
     this.startedAt = startedAt;
   }
 

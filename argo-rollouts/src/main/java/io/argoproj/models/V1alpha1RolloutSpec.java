@@ -20,9 +20,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApiCoreV1PodTemplateSpec;
-import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1LabelSelector;
-import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import io.kubernetes.client.openapi.models.V1PodTemplateSpec;
+import io.kubernetes.client.openapi.models.V1LabelSelector;
+import java.time.OffsetDateTime;
 import io.argoproj.models.V1alpha1AnalysisRunStrategy;
 import io.argoproj.models.V1alpha1ObjectRef;
 import io.argoproj.models.V1alpha1RollbackWindowSpec;
@@ -63,7 +63,7 @@ public class V1alpha1RolloutSpec {
 
   public static final String SERIALIZED_NAME_RESTART_AT = "restartAt";
   @SerializedName(SERIALIZED_NAME_RESTART_AT)
-  private IoK8sApimachineryPkgApisMetaV1Time restartAt = null;
+  private OffsetDateTime restartAt = null;
 
   public static final String SERIALIZED_NAME_REVISION_HISTORY_LIMIT = "revisionHistoryLimit";
   @SerializedName(SERIALIZED_NAME_REVISION_HISTORY_LIMIT)
@@ -75,7 +75,7 @@ public class V1alpha1RolloutSpec {
 
   public static final String SERIALIZED_NAME_SELECTOR = "selector";
   @SerializedName(SERIALIZED_NAME_SELECTOR)
-  private IoK8sApimachineryPkgApisMetaV1LabelSelector selector = null;
+  private V1LabelSelector selector = null;
 
   public static final String SERIALIZED_NAME_STRATEGY = "strategy";
   @SerializedName(SERIALIZED_NAME_STRATEGY)
@@ -83,7 +83,7 @@ public class V1alpha1RolloutSpec {
 
   public static final String SERIALIZED_NAME_TEMPLATE = "template";
   @SerializedName(SERIALIZED_NAME_TEMPLATE)
-  private IoK8sApiCoreV1PodTemplateSpec template = null;
+  private V1PodTemplateSpec template = null;
 
   public static final String SERIALIZED_NAME_WORKLOAD_REF = "workloadRef";
   @SerializedName(SERIALIZED_NAME_WORKLOAD_REF)
@@ -228,7 +228,7 @@ public class V1alpha1RolloutSpec {
   }
 
 
-  public V1alpha1RolloutSpec restartAt(IoK8sApimachineryPkgApisMetaV1Time restartAt) {
+  public V1alpha1RolloutSpec restartAt(OffsetDateTime restartAt) {
     
     this.restartAt = restartAt;
     return this;
@@ -241,12 +241,12 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getRestartAt() {
+  public OffsetDateTime getRestartAt() {
     return restartAt;
   }
 
 
-  public void setRestartAt(IoK8sApimachineryPkgApisMetaV1Time restartAt) {
+  public void setRestartAt(OffsetDateTime restartAt) {
     this.restartAt = restartAt;
   }
 
@@ -297,7 +297,7 @@ public class V1alpha1RolloutSpec {
   }
 
 
-  public V1alpha1RolloutSpec selector(IoK8sApimachineryPkgApisMetaV1LabelSelector selector) {
+  public V1alpha1RolloutSpec selector(V1LabelSelector selector) {
     
     this.selector = selector;
     return this;
@@ -310,12 +310,12 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1LabelSelector getSelector() {
+  public V1LabelSelector getSelector() {
     return selector;
   }
 
 
-  public void setSelector(IoK8sApimachineryPkgApisMetaV1LabelSelector selector) {
+  public void setSelector(V1LabelSelector selector) {
     this.selector = selector;
   }
 
@@ -343,7 +343,7 @@ public class V1alpha1RolloutSpec {
   }
 
 
-  public V1alpha1RolloutSpec template(IoK8sApiCoreV1PodTemplateSpec template) {
+  public V1alpha1RolloutSpec template(V1PodTemplateSpec template) {
     
     this.template = template;
     return this;
@@ -356,12 +356,12 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApiCoreV1PodTemplateSpec getTemplate() {
+  public V1PodTemplateSpec getTemplate() {
     return template;
   }
 
 
-  public void setTemplate(IoK8sApiCoreV1PodTemplateSpec template) {
+  public void setTemplate(V1PodTemplateSpec template) {
     this.template = template;
   }
 

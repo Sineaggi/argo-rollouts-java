@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgUtilIntstrIntOrString;
+import io.kubernetes.client.custom.IntOrString;
 import io.argoproj.models.V1alpha1MetricProvider;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -34,11 +34,11 @@ import java.io.IOException;
 public class V1alpha1Metric {
   public static final String SERIALIZED_NAME_CONSECUTIVE_ERROR_LIMIT = "consecutiveErrorLimit";
   @SerializedName(SERIALIZED_NAME_CONSECUTIVE_ERROR_LIMIT)
-  private IoK8sApimachineryPkgUtilIntstrIntOrString consecutiveErrorLimit = null;
+  private IntOrString consecutiveErrorLimit = null;
 
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
-  private IoK8sApimachineryPkgUtilIntstrIntOrString count = null;
+  private IntOrString count = null;
 
   public static final String SERIALIZED_NAME_FAILURE_CONDITION = "failureCondition";
   @SerializedName(SERIALIZED_NAME_FAILURE_CONDITION)
@@ -46,11 +46,11 @@ public class V1alpha1Metric {
 
   public static final String SERIALIZED_NAME_FAILURE_LIMIT = "failureLimit";
   @SerializedName(SERIALIZED_NAME_FAILURE_LIMIT)
-  private IoK8sApimachineryPkgUtilIntstrIntOrString failureLimit = null;
+  private IntOrString failureLimit = null;
 
   public static final String SERIALIZED_NAME_INCONCLUSIVE_LIMIT = "inconclusiveLimit";
   @SerializedName(SERIALIZED_NAME_INCONCLUSIVE_LIMIT)
-  private IoK8sApimachineryPkgUtilIntstrIntOrString inconclusiveLimit = null;
+  private IntOrString inconclusiveLimit = null;
 
   public static final String SERIALIZED_NAME_INITIAL_DELAY = "initialDelay";
   @SerializedName(SERIALIZED_NAME_INITIAL_DELAY)
@@ -73,7 +73,7 @@ public class V1alpha1Metric {
   private String successCondition;
 
 
-  public V1alpha1Metric consecutiveErrorLimit(IoK8sApimachineryPkgUtilIntstrIntOrString consecutiveErrorLimit) {
+  public V1alpha1Metric consecutiveErrorLimit(IntOrString consecutiveErrorLimit) {
     
     this.consecutiveErrorLimit = consecutiveErrorLimit;
     return this;
@@ -86,17 +86,17 @@ public class V1alpha1Metric {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgUtilIntstrIntOrString getConsecutiveErrorLimit() {
+  public IntOrString getConsecutiveErrorLimit() {
     return consecutiveErrorLimit;
   }
 
 
-  public void setConsecutiveErrorLimit(IoK8sApimachineryPkgUtilIntstrIntOrString consecutiveErrorLimit) {
+  public void setConsecutiveErrorLimit(IntOrString consecutiveErrorLimit) {
     this.consecutiveErrorLimit = consecutiveErrorLimit;
   }
 
 
-  public V1alpha1Metric count(IoK8sApimachineryPkgUtilIntstrIntOrString count) {
+  public V1alpha1Metric count(IntOrString count) {
     
     this.count = count;
     return this;
@@ -109,12 +109,12 @@ public class V1alpha1Metric {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgUtilIntstrIntOrString getCount() {
+  public IntOrString getCount() {
     return count;
   }
 
 
-  public void setCount(IoK8sApimachineryPkgUtilIntstrIntOrString count) {
+  public void setCount(IntOrString count) {
     this.count = count;
   }
 
@@ -142,7 +142,7 @@ public class V1alpha1Metric {
   }
 
 
-  public V1alpha1Metric failureLimit(IoK8sApimachineryPkgUtilIntstrIntOrString failureLimit) {
+  public V1alpha1Metric failureLimit(IntOrString failureLimit) {
     
     this.failureLimit = failureLimit;
     return this;
@@ -155,17 +155,17 @@ public class V1alpha1Metric {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgUtilIntstrIntOrString getFailureLimit() {
+  public IntOrString getFailureLimit() {
     return failureLimit;
   }
 
 
-  public void setFailureLimit(IoK8sApimachineryPkgUtilIntstrIntOrString failureLimit) {
+  public void setFailureLimit(IntOrString failureLimit) {
     this.failureLimit = failureLimit;
   }
 
 
-  public V1alpha1Metric inconclusiveLimit(IoK8sApimachineryPkgUtilIntstrIntOrString inconclusiveLimit) {
+  public V1alpha1Metric inconclusiveLimit(IntOrString inconclusiveLimit) {
     
     this.inconclusiveLimit = inconclusiveLimit;
     return this;
@@ -178,12 +178,12 @@ public class V1alpha1Metric {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgUtilIntstrIntOrString getInconclusiveLimit() {
+  public IntOrString getInconclusiveLimit() {
     return inconclusiveLimit;
   }
 
 
-  public void setInconclusiveLimit(IoK8sApimachineryPkgUtilIntstrIntOrString inconclusiveLimit) {
+  public void setInconclusiveLimit(IntOrString inconclusiveLimit) {
     this.inconclusiveLimit = inconclusiveLimit;
   }
 

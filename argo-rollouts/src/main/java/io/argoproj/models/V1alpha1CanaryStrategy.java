@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgUtilIntstrIntOrString;
+import io.kubernetes.client.custom.IntOrString;
 import io.argoproj.models.V1alpha1AntiAffinity;
 import io.argoproj.models.V1alpha1CanaryStep;
 import io.argoproj.models.V1alpha1PingPongSpec;
@@ -65,11 +65,11 @@ public class V1alpha1CanaryStrategy {
 
   public static final String SERIALIZED_NAME_MAX_SURGE = "maxSurge";
   @SerializedName(SERIALIZED_NAME_MAX_SURGE)
-  private IoK8sApimachineryPkgUtilIntstrIntOrString maxSurge = null;
+  private IntOrString maxSurge = null;
 
   public static final String SERIALIZED_NAME_MAX_UNAVAILABLE = "maxUnavailable";
   @SerializedName(SERIALIZED_NAME_MAX_UNAVAILABLE)
-  private IoK8sApimachineryPkgUtilIntstrIntOrString maxUnavailable = null;
+  private IntOrString maxUnavailable = null;
 
   public static final String SERIALIZED_NAME_MIN_PODS_PER_REPLICA_SET = "minPodsPerReplicaSet";
   @SerializedName(SERIALIZED_NAME_MIN_PODS_PER_REPLICA_SET)
@@ -242,7 +242,7 @@ public class V1alpha1CanaryStrategy {
   }
 
 
-  public V1alpha1CanaryStrategy maxSurge(IoK8sApimachineryPkgUtilIntstrIntOrString maxSurge) {
+  public V1alpha1CanaryStrategy maxSurge(IntOrString maxSurge) {
     
     this.maxSurge = maxSurge;
     return this;
@@ -255,17 +255,17 @@ public class V1alpha1CanaryStrategy {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgUtilIntstrIntOrString getMaxSurge() {
+  public IntOrString getMaxSurge() {
     return maxSurge;
   }
 
 
-  public void setMaxSurge(IoK8sApimachineryPkgUtilIntstrIntOrString maxSurge) {
+  public void setMaxSurge(IntOrString maxSurge) {
     this.maxSurge = maxSurge;
   }
 
 
-  public V1alpha1CanaryStrategy maxUnavailable(IoK8sApimachineryPkgUtilIntstrIntOrString maxUnavailable) {
+  public V1alpha1CanaryStrategy maxUnavailable(IntOrString maxUnavailable) {
     
     this.maxUnavailable = maxUnavailable;
     return this;
@@ -278,12 +278,12 @@ public class V1alpha1CanaryStrategy {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgUtilIntstrIntOrString getMaxUnavailable() {
+  public IntOrString getMaxUnavailable() {
     return maxUnavailable;
   }
 
 
-  public void setMaxUnavailable(IoK8sApimachineryPkgUtilIntstrIntOrString maxUnavailable) {
+  public void setMaxUnavailable(IntOrString maxUnavailable) {
     this.maxUnavailable = maxUnavailable;
   }
 

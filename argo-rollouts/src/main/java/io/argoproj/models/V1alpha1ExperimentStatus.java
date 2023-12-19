@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import java.time.OffsetDateTime;
 import io.argoproj.models.V1alpha1ExperimentAnalysisRunStatus;
 import io.argoproj.models.V1alpha1ExperimentCondition;
 import io.argoproj.models.V1alpha1TemplateStatus;
@@ -42,7 +42,7 @@ public class V1alpha1ExperimentStatus {
 
   public static final String SERIALIZED_NAME_AVAILABLE_AT = "availableAt";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_AT)
-  private IoK8sApimachineryPkgApisMetaV1Time availableAt = null;
+  private OffsetDateTime availableAt = null;
 
   public static final String SERIALIZED_NAME_CONDITIONS = "conditions";
   @SerializedName(SERIALIZED_NAME_CONDITIONS)
@@ -92,7 +92,7 @@ public class V1alpha1ExperimentStatus {
   }
 
 
-  public V1alpha1ExperimentStatus availableAt(IoK8sApimachineryPkgApisMetaV1Time availableAt) {
+  public V1alpha1ExperimentStatus availableAt(OffsetDateTime availableAt) {
     
     this.availableAt = availableAt;
     return this;
@@ -105,12 +105,12 @@ public class V1alpha1ExperimentStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IoK8sApimachineryPkgApisMetaV1Time getAvailableAt() {
+  public OffsetDateTime getAvailableAt() {
     return availableAt;
   }
 
 
-  public void setAvailableAt(IoK8sApimachineryPkgApisMetaV1Time availableAt) {
+  public void setAvailableAt(OffsetDateTime availableAt) {
     this.availableAt = availableAt;
   }
 
