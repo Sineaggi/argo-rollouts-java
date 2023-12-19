@@ -20,10 +20,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.V1alpha1AnalysisTemplateSpecDryRun;
-import io.argoproj.models.V1alpha1AnalysisTemplateSpecMeasurementRetention;
-import io.argoproj.models.V1alpha1ExperimentSpecAnalyses;
-import io.argoproj.models.V1alpha1ExperimentSpecTemplates;
+import io.argoproj.models.V1alpha1DryRun;
+import io.argoproj.models.V1alpha1ExperimentAnalysisTemplateRef;
+import io.argoproj.models.V1alpha1MeasurementRetention;
+import io.argoproj.models.V1alpha1TemplateSpec;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -31,17 +31,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * V1alpha1ExperimentSpec
+ * ExperimentSpec is the spec for a Experiment resource
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T02:24:32.086Z[Etc/UTC]")
+@ApiModel(description = "ExperimentSpec is the spec for a Experiment resource")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T21:57:47.017Z[Etc/UTC]")
 public class V1alpha1ExperimentSpec {
   public static final String SERIALIZED_NAME_ANALYSES = "analyses";
   @SerializedName(SERIALIZED_NAME_ANALYSES)
-  private List<V1alpha1ExperimentSpecAnalyses> analyses = null;
+  private List<V1alpha1ExperimentAnalysisTemplateRef> analyses = null;
 
   public static final String SERIALIZED_NAME_DRY_RUN = "dryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
-  private List<V1alpha1AnalysisTemplateSpecDryRun> dryRun = null;
+  private List<V1alpha1DryRun> dryRun = null;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
@@ -49,7 +50,7 @@ public class V1alpha1ExperimentSpec {
 
   public static final String SERIALIZED_NAME_MEASUREMENT_RETENTION = "measurementRetention";
   @SerializedName(SERIALIZED_NAME_MEASUREMENT_RETENTION)
-  private List<V1alpha1AnalysisTemplateSpecMeasurementRetention> measurementRetention = null;
+  private List<V1alpha1MeasurementRetention> measurementRetention = null;
 
   public static final String SERIALIZED_NAME_PROGRESS_DEADLINE_SECONDS = "progressDeadlineSeconds";
   @SerializedName(SERIALIZED_NAME_PROGRESS_DEADLINE_SECONDS)
@@ -61,20 +62,20 @@ public class V1alpha1ExperimentSpec {
 
   public static final String SERIALIZED_NAME_TEMPLATES = "templates";
   @SerializedName(SERIALIZED_NAME_TEMPLATES)
-  private List<V1alpha1ExperimentSpecTemplates> templates = new ArrayList<>();
+  private List<V1alpha1TemplateSpec> templates = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TERMINATE = "terminate";
   @SerializedName(SERIALIZED_NAME_TERMINATE)
   private Boolean terminate;
 
 
-  public V1alpha1ExperimentSpec analyses(List<V1alpha1ExperimentSpecAnalyses> analyses) {
+  public V1alpha1ExperimentSpec analyses(List<V1alpha1ExperimentAnalysisTemplateRef> analyses) {
     
     this.analyses = analyses;
     return this;
   }
 
-  public V1alpha1ExperimentSpec addAnalysesItem(V1alpha1ExperimentSpecAnalyses analysesItem) {
+  public V1alpha1ExperimentSpec addAnalysesItem(V1alpha1ExperimentAnalysisTemplateRef analysesItem) {
     if (this.analyses == null) {
       this.analyses = new ArrayList<>();
     }
@@ -83,29 +84,29 @@ public class V1alpha1ExperimentSpec {
   }
 
    /**
-   * Get analyses
+   * Analyses references AnalysisTemplates to run during the experiment
    * @return analyses
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Analyses references AnalysisTemplates to run during the experiment")
 
-  public List<V1alpha1ExperimentSpecAnalyses> getAnalyses() {
+  public List<V1alpha1ExperimentAnalysisTemplateRef> getAnalyses() {
     return analyses;
   }
 
 
-  public void setAnalyses(List<V1alpha1ExperimentSpecAnalyses> analyses) {
+  public void setAnalyses(List<V1alpha1ExperimentAnalysisTemplateRef> analyses) {
     this.analyses = analyses;
   }
 
 
-  public V1alpha1ExperimentSpec dryRun(List<V1alpha1AnalysisTemplateSpecDryRun> dryRun) {
+  public V1alpha1ExperimentSpec dryRun(List<V1alpha1DryRun> dryRun) {
     
     this.dryRun = dryRun;
     return this;
   }
 
-  public V1alpha1ExperimentSpec addDryRunItem(V1alpha1AnalysisTemplateSpecDryRun dryRunItem) {
+  public V1alpha1ExperimentSpec addDryRunItem(V1alpha1DryRun dryRunItem) {
     if (this.dryRun == null) {
       this.dryRun = new ArrayList<>();
     }
@@ -114,18 +115,18 @@ public class V1alpha1ExperimentSpec {
   }
 
    /**
-   * Get dryRun
+   * DryRun object contains the settings for running the analysis in Dry-Run mode
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "DryRun object contains the settings for running the analysis in Dry-Run mode")
 
-  public List<V1alpha1AnalysisTemplateSpecDryRun> getDryRun() {
+  public List<V1alpha1DryRun> getDryRun() {
     return dryRun;
   }
 
 
-  public void setDryRun(List<V1alpha1AnalysisTemplateSpecDryRun> dryRun) {
+  public void setDryRun(List<V1alpha1DryRun> dryRun) {
     this.dryRun = dryRun;
   }
 
@@ -137,11 +138,11 @@ public class V1alpha1ExperimentSpec {
   }
 
    /**
-   * Get duration
+   * Duration the amount of time for the experiment to run as a duration string (e.g. 30s, 5m, 1h). If omitted, the experiment will run indefinitely, stopped either via termination, or a failed analysis run.
    * @return duration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Duration the amount of time for the experiment to run as a duration string (e.g. 30s, 5m, 1h). If omitted, the experiment will run indefinitely, stopped either via termination, or a failed analysis run.")
 
   public String getDuration() {
     return duration;
@@ -153,13 +154,13 @@ public class V1alpha1ExperimentSpec {
   }
 
 
-  public V1alpha1ExperimentSpec measurementRetention(List<V1alpha1AnalysisTemplateSpecMeasurementRetention> measurementRetention) {
+  public V1alpha1ExperimentSpec measurementRetention(List<V1alpha1MeasurementRetention> measurementRetention) {
     
     this.measurementRetention = measurementRetention;
     return this;
   }
 
-  public V1alpha1ExperimentSpec addMeasurementRetentionItem(V1alpha1AnalysisTemplateSpecMeasurementRetention measurementRetentionItem) {
+  public V1alpha1ExperimentSpec addMeasurementRetentionItem(V1alpha1MeasurementRetention measurementRetentionItem) {
     if (this.measurementRetention == null) {
       this.measurementRetention = new ArrayList<>();
     }
@@ -168,18 +169,18 @@ public class V1alpha1ExperimentSpec {
   }
 
    /**
-   * Get measurementRetention
+   * MeasurementRetention object contains the settings for retaining the number of measurements during the analysis
    * @return measurementRetention
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "MeasurementRetention object contains the settings for retaining the number of measurements during the analysis")
 
-  public List<V1alpha1AnalysisTemplateSpecMeasurementRetention> getMeasurementRetention() {
+  public List<V1alpha1MeasurementRetention> getMeasurementRetention() {
     return measurementRetention;
   }
 
 
-  public void setMeasurementRetention(List<V1alpha1AnalysisTemplateSpecMeasurementRetention> measurementRetention) {
+  public void setMeasurementRetention(List<V1alpha1MeasurementRetention> measurementRetention) {
     this.measurementRetention = measurementRetention;
   }
 
@@ -191,11 +192,11 @@ public class V1alpha1ExperimentSpec {
   }
 
    /**
-   * Get progressDeadlineSeconds
+   * ProgressDeadlineSeconds The maximum time in seconds for a experiment to make progress before it is considered to be failed. Argo Rollouts will continue to process failed experiments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the experiment status. Defaults to 600s.
    * @return progressDeadlineSeconds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ProgressDeadlineSeconds The maximum time in seconds for a experiment to make progress before it is considered to be failed. Argo Rollouts will continue to process failed experiments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the experiment status. Defaults to 600s.")
 
   public Integer getProgressDeadlineSeconds() {
     return progressDeadlineSeconds;
@@ -214,11 +215,11 @@ public class V1alpha1ExperimentSpec {
   }
 
    /**
-   * Get scaleDownDelaySeconds
+   * ScaleDownDelaySeconds adds a delay before scaling down the Experiment. If omitted, the Experiment waits 30 seconds before scaling down. A minimum of 30 seconds is recommended to ensure IP table propagation across the nodes in a cluster. See https://github.com/argoproj/argo-rollouts/issues/19#issuecomment-476329960 for more information
    * @return scaleDownDelaySeconds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ScaleDownDelaySeconds adds a delay before scaling down the Experiment. If omitted, the Experiment waits 30 seconds before scaling down. A minimum of 30 seconds is recommended to ensure IP table propagation across the nodes in a cluster. See https://github.com/argoproj/argo-rollouts/issues/19#issuecomment-476329960 for more information")
 
   public Integer getScaleDownDelaySeconds() {
     return scaleDownDelaySeconds;
@@ -230,29 +231,29 @@ public class V1alpha1ExperimentSpec {
   }
 
 
-  public V1alpha1ExperimentSpec templates(List<V1alpha1ExperimentSpecTemplates> templates) {
+  public V1alpha1ExperimentSpec templates(List<V1alpha1TemplateSpec> templates) {
     
     this.templates = templates;
     return this;
   }
 
-  public V1alpha1ExperimentSpec addTemplatesItem(V1alpha1ExperimentSpecTemplates templatesItem) {
+  public V1alpha1ExperimentSpec addTemplatesItem(V1alpha1TemplateSpec templatesItem) {
     this.templates.add(templatesItem);
     return this;
   }
 
    /**
-   * Get templates
+   * Templates are a list of PodSpecs that define the ReplicaSets that should be run during an experiment.
    * @return templates
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Templates are a list of PodSpecs that define the ReplicaSets that should be run during an experiment.")
 
-  public List<V1alpha1ExperimentSpecTemplates> getTemplates() {
+  public List<V1alpha1TemplateSpec> getTemplates() {
     return templates;
   }
 
 
-  public void setTemplates(List<V1alpha1ExperimentSpecTemplates> templates) {
+  public void setTemplates(List<V1alpha1TemplateSpec> templates) {
     this.templates = templates;
   }
 
@@ -264,11 +265,11 @@ public class V1alpha1ExperimentSpec {
   }
 
    /**
-   * Get terminate
+   * Terminate is used to prematurely stop the experiment
    * @return terminate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Terminate is used to prematurely stop the experiment")
 
   public Boolean getTerminate() {
     return terminate;

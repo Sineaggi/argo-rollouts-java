@@ -29,10 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * RolloutList is a list of Rollout
+ * RolloutList is a list of Rollout resources
  */
-@ApiModel(description = "RolloutList is a list of Rollout")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T02:24:32.086Z[Etc/UTC]")
+@ApiModel(description = "RolloutList is a list of Rollout resources")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T21:57:47.017Z[Etc/UTC]")
 public class V1alpha1RolloutList implements io.kubernetes.client.common.KubernetesListObject {
   public static final String SERIALIZED_NAME_API_VERSION = "apiVersion";
   @SerializedName(SERIALIZED_NAME_API_VERSION)
@@ -86,10 +86,10 @@ public class V1alpha1RolloutList implements io.kubernetes.client.common.Kubernet
   }
 
    /**
-   * List of rollouts. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md
+   * Get items
    * @return items
   **/
-  @ApiModelProperty(required = true, value = "List of rollouts. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md")
+  @ApiModelProperty(required = true, value = "")
 
   public List<V1alpha1Rollout> getItems() {
     return items;
@@ -134,8 +134,7 @@ public class V1alpha1RolloutList implements io.kubernetes.client.common.Kubernet
    * Get metadata
    * @return metadata
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   public V1ListMeta getMetadata() {
     return metadata;

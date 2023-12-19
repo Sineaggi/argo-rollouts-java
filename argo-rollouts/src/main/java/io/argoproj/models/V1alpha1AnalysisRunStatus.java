@@ -20,23 +20,24 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.V1alpha1AnalysisRunStatusDryRunSummary;
-import io.argoproj.models.V1alpha1AnalysisRunStatusMetricResults;
+import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import io.argoproj.models.V1alpha1MetricResult;
+import io.argoproj.models.V1alpha1RunSummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * V1alpha1AnalysisRunStatus
+ * AnalysisRunStatus is the status for a AnalysisRun resource
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T02:24:32.086Z[Etc/UTC]")
+@ApiModel(description = "AnalysisRunStatus is the status for a AnalysisRun resource")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T21:57:47.017Z[Etc/UTC]")
 public class V1alpha1AnalysisRunStatus {
   public static final String SERIALIZED_NAME_DRY_RUN_SUMMARY = "dryRunSummary";
   @SerializedName(SERIALIZED_NAME_DRY_RUN_SUMMARY)
-  private V1alpha1AnalysisRunStatusDryRunSummary dryRunSummary;
+  private V1alpha1RunSummary dryRunSummary;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -44,22 +45,22 @@ public class V1alpha1AnalysisRunStatus {
 
   public static final String SERIALIZED_NAME_METRIC_RESULTS = "metricResults";
   @SerializedName(SERIALIZED_NAME_METRIC_RESULTS)
-  private List<V1alpha1AnalysisRunStatusMetricResults> metricResults = null;
+  private List<V1alpha1MetricResult> metricResults = null;
 
   public static final String SERIALIZED_NAME_PHASE = "phase";
   @SerializedName(SERIALIZED_NAME_PHASE)
-  private String phase;
+  private String phase = "";
 
   public static final String SERIALIZED_NAME_RUN_SUMMARY = "runSummary";
   @SerializedName(SERIALIZED_NAME_RUN_SUMMARY)
-  private V1alpha1AnalysisRunStatusDryRunSummary runSummary;
+  private V1alpha1RunSummary runSummary;
 
   public static final String SERIALIZED_NAME_STARTED_AT = "startedAt";
   @SerializedName(SERIALIZED_NAME_STARTED_AT)
-  private OffsetDateTime startedAt;
+  private IoK8sApimachineryPkgApisMetaV1Time startedAt = null;
 
 
-  public V1alpha1AnalysisRunStatus dryRunSummary(V1alpha1AnalysisRunStatusDryRunSummary dryRunSummary) {
+  public V1alpha1AnalysisRunStatus dryRunSummary(V1alpha1RunSummary dryRunSummary) {
     
     this.dryRunSummary = dryRunSummary;
     return this;
@@ -72,12 +73,12 @@ public class V1alpha1AnalysisRunStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1AnalysisRunStatusDryRunSummary getDryRunSummary() {
+  public V1alpha1RunSummary getDryRunSummary() {
     return dryRunSummary;
   }
 
 
-  public void setDryRunSummary(V1alpha1AnalysisRunStatusDryRunSummary dryRunSummary) {
+  public void setDryRunSummary(V1alpha1RunSummary dryRunSummary) {
     this.dryRunSummary = dryRunSummary;
   }
 
@@ -89,11 +90,11 @@ public class V1alpha1AnalysisRunStatus {
   }
 
    /**
-   * Get message
+   * Message is a message explaining current status
    * @return message
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Message is a message explaining current status")
 
   public String getMessage() {
     return message;
@@ -105,13 +106,13 @@ public class V1alpha1AnalysisRunStatus {
   }
 
 
-  public V1alpha1AnalysisRunStatus metricResults(List<V1alpha1AnalysisRunStatusMetricResults> metricResults) {
+  public V1alpha1AnalysisRunStatus metricResults(List<V1alpha1MetricResult> metricResults) {
     
     this.metricResults = metricResults;
     return this;
   }
 
-  public V1alpha1AnalysisRunStatus addMetricResultsItem(V1alpha1AnalysisRunStatusMetricResults metricResultsItem) {
+  public V1alpha1AnalysisRunStatus addMetricResultsItem(V1alpha1MetricResult metricResultsItem) {
     if (this.metricResults == null) {
       this.metricResults = new ArrayList<>();
     }
@@ -120,18 +121,18 @@ public class V1alpha1AnalysisRunStatus {
   }
 
    /**
-   * Get metricResults
+   * MetricResults contains the metrics collected during the run
    * @return metricResults
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "MetricResults contains the metrics collected during the run")
 
-  public List<V1alpha1AnalysisRunStatusMetricResults> getMetricResults() {
+  public List<V1alpha1MetricResult> getMetricResults() {
     return metricResults;
   }
 
 
-  public void setMetricResults(List<V1alpha1AnalysisRunStatusMetricResults> metricResults) {
+  public void setMetricResults(List<V1alpha1MetricResult> metricResults) {
     this.metricResults = metricResults;
   }
 
@@ -143,10 +144,10 @@ public class V1alpha1AnalysisRunStatus {
   }
 
    /**
-   * Get phase
+   * Phase is the status of the analysis run
    * @return phase
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Phase is the status of the analysis run")
 
   public String getPhase() {
     return phase;
@@ -158,7 +159,7 @@ public class V1alpha1AnalysisRunStatus {
   }
 
 
-  public V1alpha1AnalysisRunStatus runSummary(V1alpha1AnalysisRunStatusDryRunSummary runSummary) {
+  public V1alpha1AnalysisRunStatus runSummary(V1alpha1RunSummary runSummary) {
     
     this.runSummary = runSummary;
     return this;
@@ -171,17 +172,17 @@ public class V1alpha1AnalysisRunStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1AnalysisRunStatusDryRunSummary getRunSummary() {
+  public V1alpha1RunSummary getRunSummary() {
     return runSummary;
   }
 
 
-  public void setRunSummary(V1alpha1AnalysisRunStatusDryRunSummary runSummary) {
+  public void setRunSummary(V1alpha1RunSummary runSummary) {
     this.runSummary = runSummary;
   }
 
 
-  public V1alpha1AnalysisRunStatus startedAt(OffsetDateTime startedAt) {
+  public V1alpha1AnalysisRunStatus startedAt(IoK8sApimachineryPkgApisMetaV1Time startedAt) {
     
     this.startedAt = startedAt;
     return this;
@@ -194,12 +195,12 @@ public class V1alpha1AnalysisRunStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OffsetDateTime getStartedAt() {
+  public IoK8sApimachineryPkgApisMetaV1Time getStartedAt() {
     return startedAt;
   }
 
 
-  public void setStartedAt(OffsetDateTime startedAt) {
+  public void setStartedAt(IoK8sApimachineryPkgApisMetaV1Time startedAt) {
     this.startedAt = startedAt;
   }
 

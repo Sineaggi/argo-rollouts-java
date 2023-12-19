@@ -20,22 +20,23 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.V1alpha1RolloutStatusAlb;
-import io.argoproj.models.V1alpha1RolloutStatusBlueGreen;
-import io.argoproj.models.V1alpha1RolloutStatusCanary;
-import io.argoproj.models.V1alpha1RolloutStatusConditions;
-import io.argoproj.models.V1alpha1RolloutStatusPauseConditions;
+import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import io.argoproj.models.V1alpha1ALBStatus;
+import io.argoproj.models.V1alpha1BlueGreenStatus;
+import io.argoproj.models.V1alpha1CanaryStatus;
+import io.argoproj.models.V1alpha1PauseCondition;
+import io.argoproj.models.V1alpha1RolloutCondition;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * V1alpha1RolloutStatus
+ * RolloutStatus is the status for a Rollout resource
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T02:24:32.086Z[Etc/UTC]")
+@ApiModel(description = "RolloutStatus is the status for a Rollout resource")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T21:57:47.017Z[Etc/UTC]")
 public class V1alpha1RolloutStatus {
   public static final String SERIALIZED_NAME_HP_A_REPLICAS = "HPAReplicas";
   @SerializedName(SERIALIZED_NAME_HP_A_REPLICAS)
@@ -47,15 +48,11 @@ public class V1alpha1RolloutStatus {
 
   public static final String SERIALIZED_NAME_ABORTED_AT = "abortedAt";
   @SerializedName(SERIALIZED_NAME_ABORTED_AT)
-  private OffsetDateTime abortedAt;
+  private IoK8sApimachineryPkgApisMetaV1Time abortedAt = null;
 
   public static final String SERIALIZED_NAME_ALB = "alb";
   @SerializedName(SERIALIZED_NAME_ALB)
-  private V1alpha1RolloutStatusAlb alb;
-
-  public static final String SERIALIZED_NAME_ALBS = "albs";
-  @SerializedName(SERIALIZED_NAME_ALBS)
-  private List<V1alpha1RolloutStatusAlb> albs = null;
+  private V1alpha1ALBStatus alb;
 
   public static final String SERIALIZED_NAME_AVAILABLE_REPLICAS = "availableReplicas";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_REPLICAS)
@@ -63,11 +60,11 @@ public class V1alpha1RolloutStatus {
 
   public static final String SERIALIZED_NAME_BLUE_GREEN = "blueGreen";
   @SerializedName(SERIALIZED_NAME_BLUE_GREEN)
-  private V1alpha1RolloutStatusBlueGreen blueGreen;
+  private V1alpha1BlueGreenStatus blueGreen;
 
   public static final String SERIALIZED_NAME_CANARY = "canary";
   @SerializedName(SERIALIZED_NAME_CANARY)
-  private V1alpha1RolloutStatusCanary canary;
+  private V1alpha1CanaryStatus canary;
 
   public static final String SERIALIZED_NAME_COLLISION_COUNT = "collisionCount";
   @SerializedName(SERIALIZED_NAME_COLLISION_COUNT)
@@ -75,7 +72,7 @@ public class V1alpha1RolloutStatus {
 
   public static final String SERIALIZED_NAME_CONDITIONS = "conditions";
   @SerializedName(SERIALIZED_NAME_CONDITIONS)
-  private List<V1alpha1RolloutStatusConditions> conditions = null;
+  private List<V1alpha1RolloutCondition> conditions = null;
 
   public static final String SERIALIZED_NAME_CONTROLLER_PAUSE = "controllerPause";
   @SerializedName(SERIALIZED_NAME_CONTROLLER_PAUSE)
@@ -103,7 +100,7 @@ public class V1alpha1RolloutStatus {
 
   public static final String SERIALIZED_NAME_PAUSE_CONDITIONS = "pauseConditions";
   @SerializedName(SERIALIZED_NAME_PAUSE_CONDITIONS)
-  private List<V1alpha1RolloutStatusPauseConditions> pauseConditions = null;
+  private List<V1alpha1PauseCondition> pauseConditions = null;
 
   public static final String SERIALIZED_NAME_PHASE = "phase";
   @SerializedName(SERIALIZED_NAME_PHASE)
@@ -123,7 +120,7 @@ public class V1alpha1RolloutStatus {
 
   public static final String SERIALIZED_NAME_RESTARTED_AT = "restartedAt";
   @SerializedName(SERIALIZED_NAME_RESTARTED_AT)
-  private OffsetDateTime restartedAt;
+  private IoK8sApimachineryPkgApisMetaV1Time restartedAt = null;
 
   public static final String SERIALIZED_NAME_SELECTOR = "selector";
   @SerializedName(SERIALIZED_NAME_SELECTOR)
@@ -149,11 +146,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get hpAReplicas
+   * HPAReplicas the number of non-terminated replicas that are receiving active traffic
    * @return hpAReplicas
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "HPAReplicas the number of non-terminated replicas that are receiving active traffic")
 
   public Integer getHpAReplicas() {
     return hpAReplicas;
@@ -172,11 +169,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get abort
+   * Abort cancel the current rollout progression
    * @return abort
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Abort cancel the current rollout progression")
 
   public Boolean getAbort() {
     return abort;
@@ -188,7 +185,7 @@ public class V1alpha1RolloutStatus {
   }
 
 
-  public V1alpha1RolloutStatus abortedAt(OffsetDateTime abortedAt) {
+  public V1alpha1RolloutStatus abortedAt(IoK8sApimachineryPkgApisMetaV1Time abortedAt) {
     
     this.abortedAt = abortedAt;
     return this;
@@ -201,17 +198,17 @@ public class V1alpha1RolloutStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OffsetDateTime getAbortedAt() {
+  public IoK8sApimachineryPkgApisMetaV1Time getAbortedAt() {
     return abortedAt;
   }
 
 
-  public void setAbortedAt(OffsetDateTime abortedAt) {
+  public void setAbortedAt(IoK8sApimachineryPkgApisMetaV1Time abortedAt) {
     this.abortedAt = abortedAt;
   }
 
 
-  public V1alpha1RolloutStatus alb(V1alpha1RolloutStatusAlb alb) {
+  public V1alpha1RolloutStatus alb(V1alpha1ALBStatus alb) {
     
     this.alb = alb;
     return this;
@@ -224,44 +221,13 @@ public class V1alpha1RolloutStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1RolloutStatusAlb getAlb() {
+  public V1alpha1ALBStatus getAlb() {
     return alb;
   }
 
 
-  public void setAlb(V1alpha1RolloutStatusAlb alb) {
+  public void setAlb(V1alpha1ALBStatus alb) {
     this.alb = alb;
-  }
-
-
-  public V1alpha1RolloutStatus albs(List<V1alpha1RolloutStatusAlb> albs) {
-    
-    this.albs = albs;
-    return this;
-  }
-
-  public V1alpha1RolloutStatus addAlbsItem(V1alpha1RolloutStatusAlb albsItem) {
-    if (this.albs == null) {
-      this.albs = new ArrayList<>();
-    }
-    this.albs.add(albsItem);
-    return this;
-  }
-
-   /**
-   * Get albs
-   * @return albs
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<V1alpha1RolloutStatusAlb> getAlbs() {
-    return albs;
-  }
-
-
-  public void setAlbs(List<V1alpha1RolloutStatusAlb> albs) {
-    this.albs = albs;
   }
 
 
@@ -272,11 +238,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get availableReplicas
+   * Total number of available pods (ready for at least minReadySeconds) targeted by this rollout.
    * @return availableReplicas
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Total number of available pods (ready for at least minReadySeconds) targeted by this rollout.")
 
   public Integer getAvailableReplicas() {
     return availableReplicas;
@@ -288,7 +254,7 @@ public class V1alpha1RolloutStatus {
   }
 
 
-  public V1alpha1RolloutStatus blueGreen(V1alpha1RolloutStatusBlueGreen blueGreen) {
+  public V1alpha1RolloutStatus blueGreen(V1alpha1BlueGreenStatus blueGreen) {
     
     this.blueGreen = blueGreen;
     return this;
@@ -301,17 +267,17 @@ public class V1alpha1RolloutStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1RolloutStatusBlueGreen getBlueGreen() {
+  public V1alpha1BlueGreenStatus getBlueGreen() {
     return blueGreen;
   }
 
 
-  public void setBlueGreen(V1alpha1RolloutStatusBlueGreen blueGreen) {
+  public void setBlueGreen(V1alpha1BlueGreenStatus blueGreen) {
     this.blueGreen = blueGreen;
   }
 
 
-  public V1alpha1RolloutStatus canary(V1alpha1RolloutStatusCanary canary) {
+  public V1alpha1RolloutStatus canary(V1alpha1CanaryStatus canary) {
     
     this.canary = canary;
     return this;
@@ -324,12 +290,12 @@ public class V1alpha1RolloutStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1RolloutStatusCanary getCanary() {
+  public V1alpha1CanaryStatus getCanary() {
     return canary;
   }
 
 
-  public void setCanary(V1alpha1RolloutStatusCanary canary) {
+  public void setCanary(V1alpha1CanaryStatus canary) {
     this.canary = canary;
   }
 
@@ -341,11 +307,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get collisionCount
+   * Count of hash collisions for the Rollout. The Rollout controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.
    * @return collisionCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Count of hash collisions for the Rollout. The Rollout controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.")
 
   public Integer getCollisionCount() {
     return collisionCount;
@@ -357,13 +323,13 @@ public class V1alpha1RolloutStatus {
   }
 
 
-  public V1alpha1RolloutStatus conditions(List<V1alpha1RolloutStatusConditions> conditions) {
+  public V1alpha1RolloutStatus conditions(List<V1alpha1RolloutCondition> conditions) {
     
     this.conditions = conditions;
     return this;
   }
 
-  public V1alpha1RolloutStatus addConditionsItem(V1alpha1RolloutStatusConditions conditionsItem) {
+  public V1alpha1RolloutStatus addConditionsItem(V1alpha1RolloutCondition conditionsItem) {
     if (this.conditions == null) {
       this.conditions = new ArrayList<>();
     }
@@ -372,18 +338,18 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get conditions
+   * Conditions a list of conditions a rollout can have.
    * @return conditions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Conditions a list of conditions a rollout can have.")
 
-  public List<V1alpha1RolloutStatusConditions> getConditions() {
+  public List<V1alpha1RolloutCondition> getConditions() {
     return conditions;
   }
 
 
-  public void setConditions(List<V1alpha1RolloutStatusConditions> conditions) {
+  public void setConditions(List<V1alpha1RolloutCondition> conditions) {
     this.conditions = conditions;
   }
 
@@ -395,11 +361,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get controllerPause
+   * ControllerPause indicates the controller has paused the rollout. It is set to true when the controller adds a pause condition. This field helps to discern the scenario where a rollout was resumed after being paused by the controller (e.g. via the plugin). In that situation, the pauseConditions would have been cleared , but controllerPause would still be set to true.
    * @return controllerPause
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ControllerPause indicates the controller has paused the rollout. It is set to true when the controller adds a pause condition. This field helps to discern the scenario where a rollout was resumed after being paused by the controller (e.g. via the plugin). In that situation, the pauseConditions would have been cleared , but controllerPause would still be set to true.")
 
   public Boolean getControllerPause() {
     return controllerPause;
@@ -418,11 +384,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get currentPodHash
+   * CurrentPodHash the hash of the current pod template
    * @return currentPodHash
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "CurrentPodHash the hash of the current pod template")
 
   public String getCurrentPodHash() {
     return currentPodHash;
@@ -441,11 +407,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get currentStepHash
+   * CurrentStepHash the hash of the current list of steps for the current strategy. This is used to detect when the list of current steps change
    * @return currentStepHash
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "CurrentStepHash the hash of the current list of steps for the current strategy. This is used to detect when the list of current steps change")
 
   public String getCurrentStepHash() {
     return currentStepHash;
@@ -464,11 +430,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get currentStepIndex
+   * CurrentStepIndex defines the current step of the rollout is on. If the current step index is null, the controller will execute the rollout.
    * @return currentStepIndex
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "CurrentStepIndex defines the current step of the rollout is on. If the current step index is null, the controller will execute the rollout.")
 
   public Integer getCurrentStepIndex() {
     return currentStepIndex;
@@ -487,11 +453,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get message
+   * Message provides details on why the rollout is in its current phase
    * @return message
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Message provides details on why the rollout is in its current phase")
 
   public String getMessage() {
     return message;
@@ -510,11 +476,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get observedGeneration
+   * The generation observed by the rollout controller from metadata.generation
    * @return observedGeneration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The generation observed by the rollout controller from metadata.generation")
 
   public String getObservedGeneration() {
     return observedGeneration;
@@ -526,13 +492,13 @@ public class V1alpha1RolloutStatus {
   }
 
 
-  public V1alpha1RolloutStatus pauseConditions(List<V1alpha1RolloutStatusPauseConditions> pauseConditions) {
+  public V1alpha1RolloutStatus pauseConditions(List<V1alpha1PauseCondition> pauseConditions) {
     
     this.pauseConditions = pauseConditions;
     return this;
   }
 
-  public V1alpha1RolloutStatus addPauseConditionsItem(V1alpha1RolloutStatusPauseConditions pauseConditionsItem) {
+  public V1alpha1RolloutStatus addPauseConditionsItem(V1alpha1PauseCondition pauseConditionsItem) {
     if (this.pauseConditions == null) {
       this.pauseConditions = new ArrayList<>();
     }
@@ -541,18 +507,18 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get pauseConditions
+   * PauseConditions is a list of reasons why rollout became automatically paused (e.g. CanaryPauseStep, BlueGreenPause, InconclusiveAnalysis). The items in this list are populated by the controller but are cleared by the user (e.g. plugin, argo-cd resume action) when they wish to unpause. If pause conditions is empty, but controllerPause is true, it indicates the user manually unpaused the Rollout
    * @return pauseConditions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "PauseConditions is a list of reasons why rollout became automatically paused (e.g. CanaryPauseStep, BlueGreenPause, InconclusiveAnalysis). The items in this list are populated by the controller but are cleared by the user (e.g. plugin, argo-cd resume action) when they wish to unpause. If pause conditions is empty, but controllerPause is true, it indicates the user manually unpaused the Rollout")
 
-  public List<V1alpha1RolloutStatusPauseConditions> getPauseConditions() {
+  public List<V1alpha1PauseCondition> getPauseConditions() {
     return pauseConditions;
   }
 
 
-  public void setPauseConditions(List<V1alpha1RolloutStatusPauseConditions> pauseConditions) {
+  public void setPauseConditions(List<V1alpha1PauseCondition> pauseConditions) {
     this.pauseConditions = pauseConditions;
   }
 
@@ -564,11 +530,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get phase
+   * Phase is the rollout phase. Clients should only rely on the value if status.observedGeneration equals metadata.generation
    * @return phase
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Phase is the rollout phase. Clients should only rely on the value if status.observedGeneration equals metadata.generation")
 
   public String getPhase() {
     return phase;
@@ -587,11 +553,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get promoteFull
+   * PromoteFull indicates if the rollout should perform a full promotion, skipping analysis and pauses.
    * @return promoteFull
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "PromoteFull indicates if the rollout should perform a full promotion, skipping analysis and pauses.")
 
   public Boolean getPromoteFull() {
     return promoteFull;
@@ -610,11 +576,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get readyReplicas
+   * Total number of ready pods targeted by this rollout.
    * @return readyReplicas
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Total number of ready pods targeted by this rollout.")
 
   public Integer getReadyReplicas() {
     return readyReplicas;
@@ -633,11 +599,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get replicas
+   * Total number of non-terminated pods targeted by this rollout (their labels match the selector).
    * @return replicas
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Total number of non-terminated pods targeted by this rollout (their labels match the selector).")
 
   public Integer getReplicas() {
     return replicas;
@@ -649,7 +615,7 @@ public class V1alpha1RolloutStatus {
   }
 
 
-  public V1alpha1RolloutStatus restartedAt(OffsetDateTime restartedAt) {
+  public V1alpha1RolloutStatus restartedAt(IoK8sApimachineryPkgApisMetaV1Time restartedAt) {
     
     this.restartedAt = restartedAt;
     return this;
@@ -662,12 +628,12 @@ public class V1alpha1RolloutStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OffsetDateTime getRestartedAt() {
+  public IoK8sApimachineryPkgApisMetaV1Time getRestartedAt() {
     return restartedAt;
   }
 
 
-  public void setRestartedAt(OffsetDateTime restartedAt) {
+  public void setRestartedAt(IoK8sApimachineryPkgApisMetaV1Time restartedAt) {
     this.restartedAt = restartedAt;
   }
 
@@ -679,11 +645,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get selector
+   * Selector that identifies the pods that are receiving active traffic
    * @return selector
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Selector that identifies the pods that are receiving active traffic")
 
   public String getSelector() {
     return selector;
@@ -702,11 +668,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get stableRS
+   * StableRS indicates the replicaset that has successfully rolled out
    * @return stableRS
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "StableRS indicates the replicaset that has successfully rolled out")
 
   public String getStableRS() {
     return stableRS;
@@ -725,11 +691,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get updatedReplicas
+   * Total number of non-terminated pods targeted by this rollout that have the desired template spec.
    * @return updatedReplicas
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Total number of non-terminated pods targeted by this rollout that have the desired template spec.")
 
   public Integer getUpdatedReplicas() {
     return updatedReplicas;
@@ -748,11 +714,11 @@ public class V1alpha1RolloutStatus {
   }
 
    /**
-   * Get workloadObservedGeneration
+   * The generation of referenced workload observed by the rollout controller
    * @return workloadObservedGeneration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The generation of referenced workload observed by the rollout controller")
 
   public String getWorkloadObservedGeneration() {
     return workloadObservedGeneration;
@@ -777,7 +743,6 @@ public class V1alpha1RolloutStatus {
         Objects.equals(this.abort, v1alpha1RolloutStatus.abort) &&
         Objects.equals(this.abortedAt, v1alpha1RolloutStatus.abortedAt) &&
         Objects.equals(this.alb, v1alpha1RolloutStatus.alb) &&
-        Objects.equals(this.albs, v1alpha1RolloutStatus.albs) &&
         Objects.equals(this.availableReplicas, v1alpha1RolloutStatus.availableReplicas) &&
         Objects.equals(this.blueGreen, v1alpha1RolloutStatus.blueGreen) &&
         Objects.equals(this.canary, v1alpha1RolloutStatus.canary) &&
@@ -803,7 +768,7 @@ public class V1alpha1RolloutStatus {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hpAReplicas, abort, abortedAt, alb, albs, availableReplicas, blueGreen, canary, collisionCount, conditions, controllerPause, currentPodHash, currentStepHash, currentStepIndex, message, observedGeneration, pauseConditions, phase, promoteFull, readyReplicas, replicas, restartedAt, selector, stableRS, updatedReplicas, workloadObservedGeneration);
+    return Objects.hash(hpAReplicas, abort, abortedAt, alb, availableReplicas, blueGreen, canary, collisionCount, conditions, controllerPause, currentPodHash, currentStepHash, currentStepIndex, message, observedGeneration, pauseConditions, phase, promoteFull, readyReplicas, replicas, restartedAt, selector, stableRS, updatedReplicas, workloadObservedGeneration);
   }
 
 
@@ -815,7 +780,6 @@ public class V1alpha1RolloutStatus {
     sb.append("    abort: ").append(toIndentedString(abort)).append("\n");
     sb.append("    abortedAt: ").append(toIndentedString(abortedAt)).append("\n");
     sb.append("    alb: ").append(toIndentedString(alb)).append("\n");
-    sb.append("    albs: ").append(toIndentedString(albs)).append("\n");
     sb.append("    availableReplicas: ").append(toIndentedString(availableReplicas)).append("\n");
     sb.append("    blueGreen: ").append(toIndentedString(blueGreen)).append("\n");
     sb.append("    canary: ").append(toIndentedString(canary)).append("\n");

@@ -29,10 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * AnalysisRunList is a list of AnalysisRun
+ * AnalysisRunList is a list of AnalysisTemplate resources
  */
-@ApiModel(description = "AnalysisRunList is a list of AnalysisRun")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T02:24:32.086Z[Etc/UTC]")
+@ApiModel(description = "AnalysisRunList is a list of AnalysisTemplate resources")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T21:57:47.017Z[Etc/UTC]")
 public class V1alpha1AnalysisRunList implements io.kubernetes.client.common.KubernetesListObject {
   public static final String SERIALIZED_NAME_API_VERSION = "apiVersion";
   @SerializedName(SERIALIZED_NAME_API_VERSION)
@@ -86,10 +86,10 @@ public class V1alpha1AnalysisRunList implements io.kubernetes.client.common.Kube
   }
 
    /**
-   * List of analysisruns. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md
+   * Get items
    * @return items
   **/
-  @ApiModelProperty(required = true, value = "List of analysisruns. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md")
+  @ApiModelProperty(required = true, value = "")
 
   public List<V1alpha1AnalysisRun> getItems() {
     return items;
@@ -134,8 +134,7 @@ public class V1alpha1AnalysisRunList implements io.kubernetes.client.common.Kube
    * Get metadata
    * @return metadata
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   public V1ListMeta getMetadata() {
     return metadata;

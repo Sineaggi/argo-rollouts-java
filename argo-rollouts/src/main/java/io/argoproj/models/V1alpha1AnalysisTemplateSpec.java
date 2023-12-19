@@ -20,10 +20,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.V1alpha1AnalysisTemplateSpecArgs;
-import io.argoproj.models.V1alpha1AnalysisTemplateSpecDryRun;
-import io.argoproj.models.V1alpha1AnalysisTemplateSpecMeasurementRetention;
-import io.argoproj.models.V1alpha1AnalysisTemplateSpecMetrics;
+import io.argoproj.models.V1alpha1Argument;
+import io.argoproj.models.V1alpha1DryRun;
+import io.argoproj.models.V1alpha1MeasurementRetention;
+import io.argoproj.models.V1alpha1Metric;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -31,34 +31,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * V1alpha1AnalysisTemplateSpec
+ * AnalysisTemplateSpec is the specification for a AnalysisTemplate resource
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T02:24:32.086Z[Etc/UTC]")
+@ApiModel(description = "AnalysisTemplateSpec is the specification for a AnalysisTemplate resource")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T21:57:47.017Z[Etc/UTC]")
 public class V1alpha1AnalysisTemplateSpec {
   public static final String SERIALIZED_NAME_ARGS = "args";
   @SerializedName(SERIALIZED_NAME_ARGS)
-  private List<V1alpha1AnalysisTemplateSpecArgs> args = null;
+  private List<V1alpha1Argument> args = null;
 
   public static final String SERIALIZED_NAME_DRY_RUN = "dryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
-  private List<V1alpha1AnalysisTemplateSpecDryRun> dryRun = null;
+  private List<V1alpha1DryRun> dryRun = null;
 
   public static final String SERIALIZED_NAME_MEASUREMENT_RETENTION = "measurementRetention";
   @SerializedName(SERIALIZED_NAME_MEASUREMENT_RETENTION)
-  private List<V1alpha1AnalysisTemplateSpecMeasurementRetention> measurementRetention = null;
+  private List<V1alpha1MeasurementRetention> measurementRetention = null;
 
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
-  private List<V1alpha1AnalysisTemplateSpecMetrics> metrics = new ArrayList<>();
+  private List<V1alpha1Metric> metrics = new ArrayList<>();
 
 
-  public V1alpha1AnalysisTemplateSpec args(List<V1alpha1AnalysisTemplateSpecArgs> args) {
+  public V1alpha1AnalysisTemplateSpec args(List<V1alpha1Argument> args) {
     
     this.args = args;
     return this;
   }
 
-  public V1alpha1AnalysisTemplateSpec addArgsItem(V1alpha1AnalysisTemplateSpecArgs argsItem) {
+  public V1alpha1AnalysisTemplateSpec addArgsItem(V1alpha1Argument argsItem) {
     if (this.args == null) {
       this.args = new ArrayList<>();
     }
@@ -67,29 +68,29 @@ public class V1alpha1AnalysisTemplateSpec {
   }
 
    /**
-   * Get args
+   * Args are the list of arguments to the template
    * @return args
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Args are the list of arguments to the template")
 
-  public List<V1alpha1AnalysisTemplateSpecArgs> getArgs() {
+  public List<V1alpha1Argument> getArgs() {
     return args;
   }
 
 
-  public void setArgs(List<V1alpha1AnalysisTemplateSpecArgs> args) {
+  public void setArgs(List<V1alpha1Argument> args) {
     this.args = args;
   }
 
 
-  public V1alpha1AnalysisTemplateSpec dryRun(List<V1alpha1AnalysisTemplateSpecDryRun> dryRun) {
+  public V1alpha1AnalysisTemplateSpec dryRun(List<V1alpha1DryRun> dryRun) {
     
     this.dryRun = dryRun;
     return this;
   }
 
-  public V1alpha1AnalysisTemplateSpec addDryRunItem(V1alpha1AnalysisTemplateSpecDryRun dryRunItem) {
+  public V1alpha1AnalysisTemplateSpec addDryRunItem(V1alpha1DryRun dryRunItem) {
     if (this.dryRun == null) {
       this.dryRun = new ArrayList<>();
     }
@@ -98,29 +99,29 @@ public class V1alpha1AnalysisTemplateSpec {
   }
 
    /**
-   * Get dryRun
+   * DryRun object contains the settings for running the analysis in Dry-Run mode
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "DryRun object contains the settings for running the analysis in Dry-Run mode")
 
-  public List<V1alpha1AnalysisTemplateSpecDryRun> getDryRun() {
+  public List<V1alpha1DryRun> getDryRun() {
     return dryRun;
   }
 
 
-  public void setDryRun(List<V1alpha1AnalysisTemplateSpecDryRun> dryRun) {
+  public void setDryRun(List<V1alpha1DryRun> dryRun) {
     this.dryRun = dryRun;
   }
 
 
-  public V1alpha1AnalysisTemplateSpec measurementRetention(List<V1alpha1AnalysisTemplateSpecMeasurementRetention> measurementRetention) {
+  public V1alpha1AnalysisTemplateSpec measurementRetention(List<V1alpha1MeasurementRetention> measurementRetention) {
     
     this.measurementRetention = measurementRetention;
     return this;
   }
 
-  public V1alpha1AnalysisTemplateSpec addMeasurementRetentionItem(V1alpha1AnalysisTemplateSpecMeasurementRetention measurementRetentionItem) {
+  public V1alpha1AnalysisTemplateSpec addMeasurementRetentionItem(V1alpha1MeasurementRetention measurementRetentionItem) {
     if (this.measurementRetention == null) {
       this.measurementRetention = new ArrayList<>();
     }
@@ -129,45 +130,45 @@ public class V1alpha1AnalysisTemplateSpec {
   }
 
    /**
-   * Get measurementRetention
+   * MeasurementRetention object contains the settings for retaining the number of measurements during the analysis
    * @return measurementRetention
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "MeasurementRetention object contains the settings for retaining the number of measurements during the analysis")
 
-  public List<V1alpha1AnalysisTemplateSpecMeasurementRetention> getMeasurementRetention() {
+  public List<V1alpha1MeasurementRetention> getMeasurementRetention() {
     return measurementRetention;
   }
 
 
-  public void setMeasurementRetention(List<V1alpha1AnalysisTemplateSpecMeasurementRetention> measurementRetention) {
+  public void setMeasurementRetention(List<V1alpha1MeasurementRetention> measurementRetention) {
     this.measurementRetention = measurementRetention;
   }
 
 
-  public V1alpha1AnalysisTemplateSpec metrics(List<V1alpha1AnalysisTemplateSpecMetrics> metrics) {
+  public V1alpha1AnalysisTemplateSpec metrics(List<V1alpha1Metric> metrics) {
     
     this.metrics = metrics;
     return this;
   }
 
-  public V1alpha1AnalysisTemplateSpec addMetricsItem(V1alpha1AnalysisTemplateSpecMetrics metricsItem) {
+  public V1alpha1AnalysisTemplateSpec addMetricsItem(V1alpha1Metric metricsItem) {
     this.metrics.add(metricsItem);
     return this;
   }
 
    /**
-   * Get metrics
+   * Metrics contains the list of metrics to query as part of an analysis run
    * @return metrics
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Metrics contains the list of metrics to query as part of an analysis run")
 
-  public List<V1alpha1AnalysisTemplateSpecMetrics> getMetrics() {
+  public List<V1alpha1Metric> getMetrics() {
     return metrics;
   }
 
 
-  public void setMetrics(List<V1alpha1AnalysisTemplateSpecMetrics> metrics) {
+  public void setMetrics(List<V1alpha1Metric> metrics) {
     this.metrics = metrics;
   }
 

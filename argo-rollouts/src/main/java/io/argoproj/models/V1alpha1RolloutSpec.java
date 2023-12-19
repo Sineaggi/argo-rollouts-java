@@ -20,25 +20,26 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.V1alpha1AnalysisTemplateSpecProviderJobSpecSelector;
-import io.argoproj.models.V1alpha1RolloutSpecAnalysis;
-import io.argoproj.models.V1alpha1RolloutSpecRollbackWindow;
-import io.argoproj.models.V1alpha1RolloutSpecStrategy;
-import io.argoproj.models.V1alpha1RolloutSpecTemplate;
-import io.argoproj.models.V1alpha1RolloutSpecWorkloadRef;
+import io.argoproj.models.IoK8sApiCoreV1PodTemplateSpec;
+import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1LabelSelector;
+import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import io.argoproj.models.V1alpha1AnalysisRunStrategy;
+import io.argoproj.models.V1alpha1ObjectRef;
+import io.argoproj.models.V1alpha1RollbackWindowSpec;
+import io.argoproj.models.V1alpha1RolloutStrategy;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 
 /**
- * V1alpha1RolloutSpec
+ * RolloutSpec is the spec for a Rollout resource
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T02:24:32.086Z[Etc/UTC]")
+@ApiModel(description = "RolloutSpec is the spec for a Rollout resource")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T21:57:47.017Z[Etc/UTC]")
 public class V1alpha1RolloutSpec {
   public static final String SERIALIZED_NAME_ANALYSIS = "analysis";
   @SerializedName(SERIALIZED_NAME_ANALYSIS)
-  private V1alpha1RolloutSpecAnalysis analysis;
+  private V1alpha1AnalysisRunStrategy analysis;
 
   public static final String SERIALIZED_NAME_MIN_READY_SECONDS = "minReadySeconds";
   @SerializedName(SERIALIZED_NAME_MIN_READY_SECONDS)
@@ -62,7 +63,7 @@ public class V1alpha1RolloutSpec {
 
   public static final String SERIALIZED_NAME_RESTART_AT = "restartAt";
   @SerializedName(SERIALIZED_NAME_RESTART_AT)
-  private OffsetDateTime restartAt;
+  private IoK8sApimachineryPkgApisMetaV1Time restartAt = null;
 
   public static final String SERIALIZED_NAME_REVISION_HISTORY_LIMIT = "revisionHistoryLimit";
   @SerializedName(SERIALIZED_NAME_REVISION_HISTORY_LIMIT)
@@ -70,26 +71,26 @@ public class V1alpha1RolloutSpec {
 
   public static final String SERIALIZED_NAME_ROLLBACK_WINDOW = "rollbackWindow";
   @SerializedName(SERIALIZED_NAME_ROLLBACK_WINDOW)
-  private V1alpha1RolloutSpecRollbackWindow rollbackWindow;
+  private V1alpha1RollbackWindowSpec rollbackWindow;
 
   public static final String SERIALIZED_NAME_SELECTOR = "selector";
   @SerializedName(SERIALIZED_NAME_SELECTOR)
-  private V1alpha1AnalysisTemplateSpecProviderJobSpecSelector selector;
+  private IoK8sApimachineryPkgApisMetaV1LabelSelector selector = null;
 
   public static final String SERIALIZED_NAME_STRATEGY = "strategy";
   @SerializedName(SERIALIZED_NAME_STRATEGY)
-  private V1alpha1RolloutSpecStrategy strategy;
+  private V1alpha1RolloutStrategy strategy;
 
   public static final String SERIALIZED_NAME_TEMPLATE = "template";
   @SerializedName(SERIALIZED_NAME_TEMPLATE)
-  private V1alpha1RolloutSpecTemplate template;
+  private IoK8sApiCoreV1PodTemplateSpec template = null;
 
   public static final String SERIALIZED_NAME_WORKLOAD_REF = "workloadRef";
   @SerializedName(SERIALIZED_NAME_WORKLOAD_REF)
-  private V1alpha1RolloutSpecWorkloadRef workloadRef;
+  private V1alpha1ObjectRef workloadRef;
 
 
-  public V1alpha1RolloutSpec analysis(V1alpha1RolloutSpecAnalysis analysis) {
+  public V1alpha1RolloutSpec analysis(V1alpha1AnalysisRunStrategy analysis) {
     
     this.analysis = analysis;
     return this;
@@ -102,12 +103,12 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1RolloutSpecAnalysis getAnalysis() {
+  public V1alpha1AnalysisRunStrategy getAnalysis() {
     return analysis;
   }
 
 
-  public void setAnalysis(V1alpha1RolloutSpecAnalysis analysis) {
+  public void setAnalysis(V1alpha1AnalysisRunStrategy analysis) {
     this.analysis = analysis;
   }
 
@@ -119,11 +120,11 @@ public class V1alpha1RolloutSpec {
   }
 
    /**
-   * Get minReadySeconds
+   * Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
    * @return minReadySeconds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)")
 
   public Integer getMinReadySeconds() {
     return minReadySeconds;
@@ -142,11 +143,11 @@ public class V1alpha1RolloutSpec {
   }
 
    /**
-   * Get paused
+   * Paused pauses the rollout at its current step.
    * @return paused
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Paused pauses the rollout at its current step.")
 
   public Boolean getPaused() {
     return paused;
@@ -165,11 +166,11 @@ public class V1alpha1RolloutSpec {
   }
 
    /**
-   * Get progressDeadlineAbort
+   * ProgressDeadlineAbort is whether to abort the update when ProgressDeadlineSeconds is exceeded.
    * @return progressDeadlineAbort
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ProgressDeadlineAbort is whether to abort the update when ProgressDeadlineSeconds is exceeded.")
 
   public Boolean getProgressDeadlineAbort() {
     return progressDeadlineAbort;
@@ -188,11 +189,11 @@ public class V1alpha1RolloutSpec {
   }
 
    /**
-   * Get progressDeadlineSeconds
+   * ProgressDeadlineSeconds The maximum time in seconds for a rollout to make progress before it is considered to be failed. Argo Rollouts will continue to process failed rollouts and a condition with a ProgressDeadlineExceeded reason will be surfaced in the rollout status. Note that progress will not be estimated during the time a rollout is paused. Defaults to 600s.
    * @return progressDeadlineSeconds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "ProgressDeadlineSeconds The maximum time in seconds for a rollout to make progress before it is considered to be failed. Argo Rollouts will continue to process failed rollouts and a condition with a ProgressDeadlineExceeded reason will be surfaced in the rollout status. Note that progress will not be estimated during the time a rollout is paused. Defaults to 600s.")
 
   public Integer getProgressDeadlineSeconds() {
     return progressDeadlineSeconds;
@@ -211,11 +212,11 @@ public class V1alpha1RolloutSpec {
   }
 
    /**
-   * Get replicas
+   * Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.
    * @return replicas
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.")
 
   public Integer getReplicas() {
     return replicas;
@@ -227,7 +228,7 @@ public class V1alpha1RolloutSpec {
   }
 
 
-  public V1alpha1RolloutSpec restartAt(OffsetDateTime restartAt) {
+  public V1alpha1RolloutSpec restartAt(IoK8sApimachineryPkgApisMetaV1Time restartAt) {
     
     this.restartAt = restartAt;
     return this;
@@ -240,12 +241,12 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OffsetDateTime getRestartAt() {
+  public IoK8sApimachineryPkgApisMetaV1Time getRestartAt() {
     return restartAt;
   }
 
 
-  public void setRestartAt(OffsetDateTime restartAt) {
+  public void setRestartAt(IoK8sApimachineryPkgApisMetaV1Time restartAt) {
     this.restartAt = restartAt;
   }
 
@@ -257,11 +258,11 @@ public class V1alpha1RolloutSpec {
   }
 
    /**
-   * Get revisionHistoryLimit
+   * The number of old ReplicaSets to retain. If unspecified, will retain 10 old ReplicaSets
    * @return revisionHistoryLimit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The number of old ReplicaSets to retain. If unspecified, will retain 10 old ReplicaSets")
 
   public Integer getRevisionHistoryLimit() {
     return revisionHistoryLimit;
@@ -273,7 +274,7 @@ public class V1alpha1RolloutSpec {
   }
 
 
-  public V1alpha1RolloutSpec rollbackWindow(V1alpha1RolloutSpecRollbackWindow rollbackWindow) {
+  public V1alpha1RolloutSpec rollbackWindow(V1alpha1RollbackWindowSpec rollbackWindow) {
     
     this.rollbackWindow = rollbackWindow;
     return this;
@@ -286,17 +287,17 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1RolloutSpecRollbackWindow getRollbackWindow() {
+  public V1alpha1RollbackWindowSpec getRollbackWindow() {
     return rollbackWindow;
   }
 
 
-  public void setRollbackWindow(V1alpha1RolloutSpecRollbackWindow rollbackWindow) {
+  public void setRollbackWindow(V1alpha1RollbackWindowSpec rollbackWindow) {
     this.rollbackWindow = rollbackWindow;
   }
 
 
-  public V1alpha1RolloutSpec selector(V1alpha1AnalysisTemplateSpecProviderJobSpecSelector selector) {
+  public V1alpha1RolloutSpec selector(IoK8sApimachineryPkgApisMetaV1LabelSelector selector) {
     
     this.selector = selector;
     return this;
@@ -309,17 +310,17 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1AnalysisTemplateSpecProviderJobSpecSelector getSelector() {
+  public IoK8sApimachineryPkgApisMetaV1LabelSelector getSelector() {
     return selector;
   }
 
 
-  public void setSelector(V1alpha1AnalysisTemplateSpecProviderJobSpecSelector selector) {
+  public void setSelector(IoK8sApimachineryPkgApisMetaV1LabelSelector selector) {
     this.selector = selector;
   }
 
 
-  public V1alpha1RolloutSpec strategy(V1alpha1RolloutSpecStrategy strategy) {
+  public V1alpha1RolloutSpec strategy(V1alpha1RolloutStrategy strategy) {
     
     this.strategy = strategy;
     return this;
@@ -332,17 +333,17 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1RolloutSpecStrategy getStrategy() {
+  public V1alpha1RolloutStrategy getStrategy() {
     return strategy;
   }
 
 
-  public void setStrategy(V1alpha1RolloutSpecStrategy strategy) {
+  public void setStrategy(V1alpha1RolloutStrategy strategy) {
     this.strategy = strategy;
   }
 
 
-  public V1alpha1RolloutSpec template(V1alpha1RolloutSpecTemplate template) {
+  public V1alpha1RolloutSpec template(IoK8sApiCoreV1PodTemplateSpec template) {
     
     this.template = template;
     return this;
@@ -355,17 +356,17 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1RolloutSpecTemplate getTemplate() {
+  public IoK8sApiCoreV1PodTemplateSpec getTemplate() {
     return template;
   }
 
 
-  public void setTemplate(V1alpha1RolloutSpecTemplate template) {
+  public void setTemplate(IoK8sApiCoreV1PodTemplateSpec template) {
     this.template = template;
   }
 
 
-  public V1alpha1RolloutSpec workloadRef(V1alpha1RolloutSpecWorkloadRef workloadRef) {
+  public V1alpha1RolloutSpec workloadRef(V1alpha1ObjectRef workloadRef) {
     
     this.workloadRef = workloadRef;
     return this;
@@ -378,12 +379,12 @@ public class V1alpha1RolloutSpec {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public V1alpha1RolloutSpecWorkloadRef getWorkloadRef() {
+  public V1alpha1ObjectRef getWorkloadRef() {
     return workloadRef;
   }
 
 
-  public void setWorkloadRef(V1alpha1RolloutSpecWorkloadRef workloadRef) {
+  public void setWorkloadRef(V1alpha1ObjectRef workloadRef) {
     this.workloadRef = workloadRef;
   }
 

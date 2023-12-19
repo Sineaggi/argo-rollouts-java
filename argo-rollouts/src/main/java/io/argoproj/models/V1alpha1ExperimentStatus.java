@@ -20,32 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.argoproj.models.V1alpha1ExperimentStatusAnalysisRuns;
-import io.argoproj.models.V1alpha1ExperimentStatusTemplateStatuses;
-import io.argoproj.models.V1alpha1RolloutStatusConditions;
+import io.argoproj.models.IoK8sApimachineryPkgApisMetaV1Time;
+import io.argoproj.models.V1alpha1ExperimentAnalysisRunStatus;
+import io.argoproj.models.V1alpha1ExperimentCondition;
+import io.argoproj.models.V1alpha1TemplateStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * V1alpha1ExperimentStatus
+ * ExperimentStatus is the status for a Experiment resource
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T02:24:32.086Z[Etc/UTC]")
+@ApiModel(description = "ExperimentStatus is the status for a Experiment resource")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-12-19T21:57:47.017Z[Etc/UTC]")
 public class V1alpha1ExperimentStatus {
   public static final String SERIALIZED_NAME_ANALYSIS_RUNS = "analysisRuns";
   @SerializedName(SERIALIZED_NAME_ANALYSIS_RUNS)
-  private List<V1alpha1ExperimentStatusAnalysisRuns> analysisRuns = null;
+  private List<V1alpha1ExperimentAnalysisRunStatus> analysisRuns = null;
 
   public static final String SERIALIZED_NAME_AVAILABLE_AT = "availableAt";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_AT)
-  private OffsetDateTime availableAt;
+  private IoK8sApimachineryPkgApisMetaV1Time availableAt = null;
 
   public static final String SERIALIZED_NAME_CONDITIONS = "conditions";
   @SerializedName(SERIALIZED_NAME_CONDITIONS)
-  private List<V1alpha1RolloutStatusConditions> conditions = null;
+  private List<V1alpha1ExperimentCondition> conditions = null;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -57,16 +58,16 @@ public class V1alpha1ExperimentStatus {
 
   public static final String SERIALIZED_NAME_TEMPLATE_STATUSES = "templateStatuses";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_STATUSES)
-  private List<V1alpha1ExperimentStatusTemplateStatuses> templateStatuses = null;
+  private List<V1alpha1TemplateStatus> templateStatuses = null;
 
 
-  public V1alpha1ExperimentStatus analysisRuns(List<V1alpha1ExperimentStatusAnalysisRuns> analysisRuns) {
+  public V1alpha1ExperimentStatus analysisRuns(List<V1alpha1ExperimentAnalysisRunStatus> analysisRuns) {
     
     this.analysisRuns = analysisRuns;
     return this;
   }
 
-  public V1alpha1ExperimentStatus addAnalysisRunsItem(V1alpha1ExperimentStatusAnalysisRuns analysisRunsItem) {
+  public V1alpha1ExperimentStatus addAnalysisRunsItem(V1alpha1ExperimentAnalysisRunStatus analysisRunsItem) {
     if (this.analysisRuns == null) {
       this.analysisRuns = new ArrayList<>();
     }
@@ -75,23 +76,23 @@ public class V1alpha1ExperimentStatus {
   }
 
    /**
-   * Get analysisRuns
+   * AnalysisRuns tracks the status of AnalysisRuns associated with this Experiment
    * @return analysisRuns
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "AnalysisRuns tracks the status of AnalysisRuns associated with this Experiment")
 
-  public List<V1alpha1ExperimentStatusAnalysisRuns> getAnalysisRuns() {
+  public List<V1alpha1ExperimentAnalysisRunStatus> getAnalysisRuns() {
     return analysisRuns;
   }
 
 
-  public void setAnalysisRuns(List<V1alpha1ExperimentStatusAnalysisRuns> analysisRuns) {
+  public void setAnalysisRuns(List<V1alpha1ExperimentAnalysisRunStatus> analysisRuns) {
     this.analysisRuns = analysisRuns;
   }
 
 
-  public V1alpha1ExperimentStatus availableAt(OffsetDateTime availableAt) {
+  public V1alpha1ExperimentStatus availableAt(IoK8sApimachineryPkgApisMetaV1Time availableAt) {
     
     this.availableAt = availableAt;
     return this;
@@ -104,23 +105,23 @@ public class V1alpha1ExperimentStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OffsetDateTime getAvailableAt() {
+  public IoK8sApimachineryPkgApisMetaV1Time getAvailableAt() {
     return availableAt;
   }
 
 
-  public void setAvailableAt(OffsetDateTime availableAt) {
+  public void setAvailableAt(IoK8sApimachineryPkgApisMetaV1Time availableAt) {
     this.availableAt = availableAt;
   }
 
 
-  public V1alpha1ExperimentStatus conditions(List<V1alpha1RolloutStatusConditions> conditions) {
+  public V1alpha1ExperimentStatus conditions(List<V1alpha1ExperimentCondition> conditions) {
     
     this.conditions = conditions;
     return this;
   }
 
-  public V1alpha1ExperimentStatus addConditionsItem(V1alpha1RolloutStatusConditions conditionsItem) {
+  public V1alpha1ExperimentStatus addConditionsItem(V1alpha1ExperimentCondition conditionsItem) {
     if (this.conditions == null) {
       this.conditions = new ArrayList<>();
     }
@@ -129,18 +130,18 @@ public class V1alpha1ExperimentStatus {
   }
 
    /**
-   * Get conditions
+   * Conditions a list of conditions a experiment can have.
    * @return conditions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Conditions a list of conditions a experiment can have.")
 
-  public List<V1alpha1RolloutStatusConditions> getConditions() {
+  public List<V1alpha1ExperimentCondition> getConditions() {
     return conditions;
   }
 
 
-  public void setConditions(List<V1alpha1RolloutStatusConditions> conditions) {
+  public void setConditions(List<V1alpha1ExperimentCondition> conditions) {
     this.conditions = conditions;
   }
 
@@ -152,11 +153,11 @@ public class V1alpha1ExperimentStatus {
   }
 
    /**
-   * Get message
+   * Message is an explanation for the current status
    * @return message
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Message is an explanation for the current status")
 
   public String getMessage() {
     return message;
@@ -175,11 +176,11 @@ public class V1alpha1ExperimentStatus {
   }
 
    /**
-   * Get phase
+   * Phase is the status of the experiment. Takes into consideration ReplicaSet degradations and AnalysisRun statuses
    * @return phase
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Phase is the status of the experiment. Takes into consideration ReplicaSet degradations and AnalysisRun statuses")
 
   public String getPhase() {
     return phase;
@@ -191,13 +192,13 @@ public class V1alpha1ExperimentStatus {
   }
 
 
-  public V1alpha1ExperimentStatus templateStatuses(List<V1alpha1ExperimentStatusTemplateStatuses> templateStatuses) {
+  public V1alpha1ExperimentStatus templateStatuses(List<V1alpha1TemplateStatus> templateStatuses) {
     
     this.templateStatuses = templateStatuses;
     return this;
   }
 
-  public V1alpha1ExperimentStatus addTemplateStatusesItem(V1alpha1ExperimentStatusTemplateStatuses templateStatusesItem) {
+  public V1alpha1ExperimentStatus addTemplateStatusesItem(V1alpha1TemplateStatus templateStatusesItem) {
     if (this.templateStatuses == null) {
       this.templateStatuses = new ArrayList<>();
     }
@@ -206,18 +207,18 @@ public class V1alpha1ExperimentStatus {
   }
 
    /**
-   * Get templateStatuses
+   * TemplateStatuses holds the ReplicaSet related statuses for individual templates
    * @return templateStatuses
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "TemplateStatuses holds the ReplicaSet related statuses for individual templates")
 
-  public List<V1alpha1ExperimentStatusTemplateStatuses> getTemplateStatuses() {
+  public List<V1alpha1TemplateStatus> getTemplateStatuses() {
     return templateStatuses;
   }
 
 
-  public void setTemplateStatuses(List<V1alpha1ExperimentStatusTemplateStatuses> templateStatuses) {
+  public void setTemplateStatuses(List<V1alpha1TemplateStatus> templateStatuses) {
     this.templateStatuses = templateStatuses;
   }
 
