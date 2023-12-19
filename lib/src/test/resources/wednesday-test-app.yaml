@@ -1,0 +1,465 @@
+apiVersion: v1
+data:
+  DATADOG_ENABLED: "true"
+  DATADOG_ENVIRONMENT: staging
+  DD_DOGSTATSD_NON_LOCAL_TRAFFIC: "true"
+  DD_JDBC_ANALYTICS_ENABLED: "true"
+  DD_JMXFETCH_ENABLED: "true"
+  DD_LOGS_INJECTION: "true"
+  DD_SERVICE_MAPPING: kafka:tuesday-test-app
+  DD_SERVICE_NAME: tuesday-test-app
+  DD_TRACE_AGENT_PORT: "8126"
+  DD_TRACE_ANALYTICS_ENABLED: "true"
+  DD_TRACE_DB_CLIENT_SPLIT_BY_INSTANCE: "true"
+  DD_TRACE_JMX_TAGS: env:staging
+  GLOBAL_ROLLBAR_ENVIRONMENT: staging
+  JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=50 -XX:+UseZGC -XX:+ZGenerational -XX:+UseStringDeduplication
+    -javaagent:/data/datadog/dd-java-agent.jar -Dspring.aot.enabled=true
+  SPRING_PROFILES_ACTIVE: docker
+kind: ConfigMap
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: PruneLast=true
+  labels:
+    app: wednesday-test-app
+  name: tuesday-test-app-config
+  namespace: default
+---
+apiVersion: v1
+data:
+  DATADOG_ENABLED: "true"
+  DATADOG_ENVIRONMENT: staging
+  DD_DOGSTATSD_NON_LOCAL_TRAFFIC: "true"
+  DD_JDBC_ANALYTICS_ENABLED: "true"
+  DD_JMXFETCH_ENABLED: "true"
+  DD_LOGS_INJECTION: "true"
+  DD_SERVICE_MAPPING: kafka:wednesday-test-app
+  DD_SERVICE_NAME: wednesday-test-app
+  DD_TRACE_AGENT_PORT: "8126"
+  DD_TRACE_ANALYTICS_ENABLED: "true"
+  DD_TRACE_DB_CLIENT_SPLIT_BY_INSTANCE: "true"
+  DD_TRACE_JMX_TAGS: env:staging
+  ENVIRONMENT: staging
+  GLOBAL_ROLLBAR_ENVIRONMENT: staging
+  JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=50 -XX:+UseZGC -XX:+ZGenerational -XX:+UseStringDeduplication
+    -javaagent:/data/datadog/dd-java-agent.jar -Dspring.aot.enabled=true
+  SPRING_PROFILES_ACTIVE: docker
+kind: ConfigMap
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: PruneLast=true
+  labels:
+    app: wednesday-test-app
+  name: wednesday-test-app-config
+  namespace: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: wednesday-test-app
+  name: tuesday-test-app
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  selector:
+    app: wednesday-test-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: wednesday-test-app
+  name: tuesday-test-app-preview
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  selector:
+    app: wednesday-test-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: wednesday-test-app
+  name: wednesday-test-app
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  selector:
+    app: wednesday-test-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: wednesday-test-app
+  name: wednesday-test-app-preview
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  selector:
+    app: wednesday-test-app
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  labels:
+    app: wednesday-test-app
+  name: tuesday-test-app
+  namespace: default
+spec:
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: wednesday-test-app
+  strategy:
+    canary:
+      antiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          weight: 100
+      canaryService: tuesday-test-app-preview
+      maxUnavailable: 1
+      stableService: tuesday-test-app
+      steps:
+      - analysis:
+          args:
+          - name: argocd-app
+            value: tuesday-test-app
+          - name: service-name
+            value: tuesday-test-app
+          templates:
+          - clusterScope: true
+            templateName: log-error-rate
+  template:
+    metadata:
+      labels:
+        app: wednesday-test-app
+        version: foo-test-2
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values:
+                - app
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - tuesday-test-app
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - command:
+        - /data/envconsul/envconsul
+        - -consul
+        - $(NODE_IP):8500
+        - -config
+        - /data/sofi/bin/config.hcl
+        - -once
+        env:
+        - name: NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: DD_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        - name: DOGSTATSD_HOST_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        - name: DD_ENTITY_ID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        - name: VAULT_ADDR
+          value: http://vault.kube-system
+        - name: VAULT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: WEDNESDAY_TEST_APP_VAULT_TOKEN
+              name: vault
+        envFrom:
+        - configMapRef:
+            name: tuesday-test-app-config
+        image: registry.sofi.com/wednesday-test-app:master
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /actuator/health/liveness
+            port: http
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        name: tuesday-test-app
+        ports:
+        - containerPort: 8080
+          name: http
+        readinessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /actuator/health
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        resources:
+          limits:
+            memory: 1Gi
+          requests:
+            cpu: 800m
+            memory: 1Gi
+      enableServiceLinks: false
+      terminationGracePeriodSeconds: 120
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  labels:
+    app: wednesday-test-app
+  name: wednesday-test-app
+  namespace: default
+spec:
+  revisionHistoryLimit: 3
+  rollbackWindow:
+    revisions: 3
+  selector:
+    matchLabels:
+      app: wednesday-test-app
+  strategy:
+    blueGreen:
+      activeService: wednesday-test-app
+      antiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          weight: 100
+      autoPromotionEnabled: true
+      autoPromotionSeconds: 120
+      maxUnavailable: 1
+      prePromotionAnalysis:
+        args:
+        - name: environment
+          value: staging
+        - name: image-registry
+          value: 783955547754.dkr.ecr.us-west-2.amazonaws.com
+        - name: argocd-app
+          value: wednesday-test-app
+        - name: image-name
+          value: wednesday-test-app-smoke-tests
+        templates:
+        - clusterScope: true
+          templateName: smoketests-envconsul
+      previewReplicaCount: 1
+      previewService: wednesday-test-app-preview
+      scaleDownDelaySeconds: 30
+  template:
+    metadata:
+      labels:
+        app: wednesday-test-app
+        version: foo-test-2
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values:
+                - app
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - wednesday-test-app
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - command:
+        - /data/envconsul/envconsul
+        - -consul
+        - $(NODE_IP):8500
+        - -config
+        - /data/sofi/bin/config.hcl
+        - -once
+        env:
+        - name: NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: DD_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        - name: DOGSTATSD_HOST_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        - name: DD_ENTITY_ID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+        - name: VAULT_ADDR
+          value: http://vault.kube-system
+        - name: VAULT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: WEDNESDAY_TEST_APP_VAULT_TOKEN
+              name: vault
+        - name: SERVICE_DISCOVERY_FALLBACK_MAPPING
+          value: google:81,facebook:82
+        envFrom:
+        - configMapRef:
+            name: wednesday-test-app-config
+        image: registry.sofi.com/wednesday-test-app:master
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /actuator/health/liveness
+            port: http
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        name: wednesday-test-app
+        ports:
+        - containerPort: 8080
+          name: http
+        readinessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /actuator/health
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        resources:
+          limits:
+            memory: 1Gi
+          requests:
+            cpu: 800m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmp
+      - env:
+        - name: EXP_SERVER_SIDE_SDK_CONFIG_TOKENS
+          value: none
+        - name: UNLEASH_INSTANCE_ID
+          value: ngxSgRKRZAgLq71V3WyE
+        - name: UNLEASH_URL
+          value: https://gitlab.com/api/v4/feature_flags/unleash/31968353
+        - name: UNLEASH_API_TOKEN
+          value: none
+        - name: UNLEASH_PROXY_CLIENT_KEYS
+          value: none
+        - name: PORT
+          value: "3000"
+        image: registry.sofi.com/unleash-proxy:main
+        livenessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /proxy/health
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        name: unleash-proxy
+        ports:
+        - containerPort: 3000
+          name: http
+        readinessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /proxy/health
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        resources:
+          limits:
+            memory: 1Gi
+          requests:
+            cpu: 800m
+            memory: 1Gi
+      enableServiceLinks: false
+      securityContext:
+        fsGroup: 1000
+      terminationGracePeriodSeconds: 120
+      volumes:
+      - ephemeral:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 1Gi
+              storageClassName: ebs-gp3-us-west2-baseio
+        name: tmp
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: wednesday-test-app
+  name: tuesday-test-app
+  namespace: default
+spec:
+  maxReplicas: 6
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: tuesday-test-app
+  targetCPUUtilizationPercentage: 80
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: wednesday-test-app
+  name: wednesday-test-app
+  namespace: default
+spec:
+  maxReplicas: 6
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: wednesday-test-app
+  targetCPUUtilizationPercentage: 80
